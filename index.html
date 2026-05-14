@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>猶太曆一年時間軸 · The Hebrew Almanac</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&family=Noto+Serif+TC:wght@400;500;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f4ecd8;
+    --cream-2:#ece2c8;
+    --ink:#1a1612;
+    --ink-soft:#3a342c;
+    --rule:#1a1612;
+    --accent:#a8341f;
+    --accent-2:#5b6b3a;
+    --gold:#a87f2e;
+  }
+  html,body{background:var(--cream);color:var(--ink);}
+  body{
+    font-family:'IBM Plex Serif','Noto Serif TC',Georgia,serif;
+    background-image:
+      radial-gradient(rgba(26,22,18,0.10) 1px, transparent 1px),
+      radial-gradient(rgba(26,22,18,0.06) 1px, transparent 1px);
+    background-size: 4px 4px, 7px 7px;
+    background-position: 0 0, 2px 2px;
+  }
+  .serif-display{font-family:'Playfair Display','Noto Serif TC',serif;}
+  .serif-body{font-family:'IBM Plex Serif','Noto Serif TC',serif;}
+  .sans-cn{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  .strike{position:relative;display:inline-block;}
+  .strike::after{
+    content:'';position:absolute;left:-4%;right:-4%;top:54%;height:6px;
+    background:var(--ink);transform:rotate(-2deg);
+  }
+  .italic-accent{font-style:italic;color:var(--accent);}
+  .rule-thick{border-top:3px double var(--ink);}
+  .rule-thin{border-top:1px solid var(--ink);}
+  .rule-hair{border-top:1px solid rgba(26,22,18,0.3);}
+  .dropcap::first-letter{
+    font-family:'Playfair Display',serif;
+    font-weight:900;
+    float:left;
+    font-size:5.2rem;
+    line-height:0.85;
+    padding:0.4rem 0.6rem 0 0;
+    color:var(--accent);
+  }
+  .col-rule{column-rule:1px solid rgba(26,22,18,0.25);}
+  .pull-quote{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    border-left:3px solid var(--accent);
+    border-right:3px solid var(--accent);
+  }
+  .section-num{
+    font-family:'Playfair Display',serif;
+    font-weight:900;
+    font-style:italic;
+    color:var(--accent);
+  }
+  .badge-stamp{
+    border:2px solid var(--accent);
+    color:var(--accent);
+    transform:rotate(-4deg);
+    font-family:'JetBrains Mono',monospace;
+    letter-spacing:0.15em;
+  }
+  .ornament{letter-spacing:0.4em;color:var(--ink-soft);}
+  .ticker{
+    background:var(--ink);color:var(--cream);
+    font-family:'JetBrains Mono',monospace;
+    letter-spacing:0.08em;
+  }
+  .small-cap{font-variant:small-caps;letter-spacing:0.12em;}
+  .month-card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.35), rgba(255,255,255,0));
+    border:1px solid rgba(26,22,18,0.5);
+  }
+  .feast-dot{
+    width:6px;height:6px;border-radius:9999px;background:var(--accent);
+    display:inline-block;margin-right:8px;vertical-align:middle;
+  }
+  .underline-wave{
+    background-image: linear-gradient(transparent 92%, var(--accent) 92%, var(--accent) 96%, transparent 96%);
+  }
+  .vrule{writing-mode:vertical-rl;letter-spacing:0.4em;}
+  .ascii-art{
+    font-family:'JetBrains Mono',monospace;
+    white-space:pre;
+    line-height:1.05;
+    font-size:9px;
+    color:var(--ink-soft);
+  }
+  .parallax-band{
+    background:repeating-linear-gradient(
+      90deg,
+      var(--ink) 0 2px,
+      transparent 2px 9px
+    );
+    height:6px;
+  }
+  .season-spring{--season:#5b6b3a;}
+  .season-summer{--season:#a8341f;}
+  .season-fall{--season:#a87f2e;}
+  .season-winter{--season:#2a4a5b;}
+  .season-chip{
+    background:var(--season);color:var(--cream);
+    font-family:'JetBrains Mono',monospace;
+    letter-spacing:0.18em;
+  }
+  .season-rule{border-color:var(--season);}
+  .season-num{color:var(--season);}
+  .feast-row{border-bottom:1px dotted rgba(26,22,18,0.35);}
+  .feast-row:last-child{border-bottom:none;}
+  .micro{font-size:10.5px;line-height:1.55;}
+  .nano{font-size:9.5px;letter-spacing:0.08em;}
+  .stamp-circle{
+    border:2px solid var(--accent);
+    border-radius:9999px;
+    color:var(--accent);
+    transform:rotate(-8deg);
+  }
+  .torch-svg{filter:drop-shadow(0 1px 0 rgba(0,0,0,0.15));}
+  .axis-row{position:relative;}
+  .axis-tick{
+    position:absolute;left:50%;top:50%;
+    transform:translate(-50%,-50%);
+    width:14px;height:14px;border-radius:9999px;
+    background:var(--cream);
+    box-shadow:0 0 0 2px var(--ink);
+  }
+  .axis-tick-inner{
+    position:absolute;left:50%;top:50%;
+    transform:translate(-50%,-50%);
+    width:8px;height:8px;border-radius:9999px;
+  }
+  .axis-hair-left{
+    position:absolute;right:50%;top:50%;
+    transform:translateY(-50%);
+    width:36px;height:1px;background:rgba(26,22,18,0.45);
+  }
+  .axis-hair-right{
+    position:absolute;left:50%;top:50%;
+    transform:translateY(-50%);
+    width:36px;height:1px;background:rgba(26,22,18,0.45);
+  }
+  .axis-season-band{
+    position:absolute;left:50%;transform:translateX(-50%);
+    writing-mode:vertical-rl;letter-spacing:0.5em;
+    font-family:'JetBrains Mono',monospace;
+    font-size:9.5px;color:var(--cream);
+    padding:8px 4px;border-radius:2px;
+    z-index:2;
+  }
+  @media print {
+    body{background:#f4ecd8;}
+  }
+</style>
+</head>
+<body class="min-h-screen">
+
+<div class="max-w-[1180px] mx-auto px-8 py-10">
+
+  <!-- ============ DATELINE / MASTHEAD ============ -->
+  <header>
+    <div class="flex items-end justify-between mono text-[11px] tracking-[0.2em] uppercase pb-2">
+      <span>The Hebrew Almanac · 希伯來年曆</span>
+      <span>Vol. 5786 · No. 01</span>
+      <span>15 May 2026 · Jerusalem Edition</span>
+      <span>Price · 18 shekels</span>
+    </div>
+    <div class="rule-thick"></div>
+    <div class="parallax-band my-2"></div>
+    <div class="rule-thin"></div>
+
+    <div class="grid grid-cols-12 gap-6 mt-8 mb-6">
+      <div class="col-span-2 flex flex-col justify-between">
+        <div class="vrule sans-cn text-[10px] uppercase text-[color:var(--ink-soft)]">A Vertical Axis · Spring to Winter</div>
+        <div class="mono text-[10px] mt-4">No. 01 — 2026</div>
+      </div>
+      <div class="col-span-10">
+        <div class="small-cap text-[12px] mono mb-2">— Cover Feature —</div>
+        <h1 class="serif-display font-black leading-[0.92] tracking-tight" style="font-size: clamp(3.4rem, 7vw, 6.2rem);">
+          A Year on <br>
+          <span class="italic-accent">a Single Line</span>,
+        </h1>
+        <p class="serif-body italic text-[15px] mt-5 max-w-[55ch] text-[color:var(--ink-soft)]">
+          一份按宗教年自尼散月起、與西曆春季對應的時間軸 ——
+          首章以一條垂直線承載整整 <span class="mono not-italic">12</span> 個月份,
+          線左為曆法、線右為節期; 其後以視差捲動逐層展開
+          <span class="mono not-italic">4</span> 個季節、
+          <span class="mono not-italic">14</span> 個節期、
+          與兩個禁食日。
+        </p>
+      </div>
+    </div>
+
+    <div class="ticker px-4 py-2 text-[11px] flex items-center justify-between flex-wrap gap-x-6 gap-y-1">
+      <span>▸ NISAN 14 — PESACH</span>
+      <span>▸ SIVAN 6 — SHAVUOT</span>
+      <span>▸ AV 9 — TISHA B'AV</span>
+      <span>▸ TISHRI 10 — YOM KIPPUR</span>
+      <span>▸ KISLEV 25 — HANUKKAH</span>
+      <span>▸ ADAR 14 — PURIM</span>
+    </div>
+  </header>
+
+  <!-- ============ STANDFIRST ============ -->
+  <section class="mt-10 grid grid-cols-12 gap-6">
+    <div class="col-span-3 border-r border-[color:var(--ink)] pr-5">
+      <div class="badge-stamp inline-block px-3 py-1 text-[10px]">EDITORIAL · § 00</div>
+      <div class="ornament mt-6 text-[14px]">✶ ✶ ✶</div>
+      <div class="mono text-[10px] mt-6 uppercase">By the Editor's Desk<br>耶路撒冷編輯部</div>
+    </div>
+    <div class="col-span-9">
+      <p class="serif-body dropcap text-[16px] leading-[1.75]">
+        宗教年自 <span class="small-cap italic-accent">尼散月</span> 起 —— 這一句, 是整份年曆的開場白。
+        當西曆三、四月的春風吹過耶路撒冷的橄欖樹, 猶太人的時間就從這裡重新開始計數。
+        本期首章以 <span class="italic">a single vertical line</span> 鋪開整年:
+        線, 是宗教年的中軸; 線左是曆法 (月份與西曆), 線右是節期 (節日與禁食日)。
+        其後再以 <span class="italic">parallax scrolling</span> 把整年分成四個前景層 ——
+        春的救贖、夏的哀悼、秋的聖會、冬的盼望 —— 每一層之後, 都有月相、節期、與一段尚未過完的歷史在更慢的速度上滑動。
+      </p>
+    </div>
+  </section>
+
+  <div class="rule-thick mt-10"></div>
+  <div class="parallax-band my-1"></div>
+
+  <!-- ============ SECTION 00 · VERTICAL YEAR AXIS ============ -->
+  <section class="mt-10">
+    <div class="flex items-end justify-between mb-4">
+      <h2 class="serif-display italic text-[28px] font-bold">一線之年 · The Vertical Year Axis</h2>
+      <span class="mono text-[10px] tracking-[0.2em]">FIG. 00 — ONE LINE, TWELVE MOONS</span>
+    </div>
+    <div class="rule-thin"></div>
+
+    <div class="grid grid-cols-12 gap-6 mt-5">
+      <div class="col-span-3 text-right serif-body italic text-[12px] text-[color:var(--ink-soft)] leading-[1.7]">
+        左側 · 曆法<br>
+        <span class="mono not-italic text-[10px] tracking-[0.15em]">CALENDAR · HEB. + GREG.</span>
+      </div>
+      <div class="col-span-6 text-center serif-body italic text-[12px] text-[color:var(--ink-soft)] leading-[1.7]">
+        中軸 · 一年<br>
+        <span class="mono not-italic text-[10px] tracking-[0.15em]">AXIS · NISAN → ADAR</span>
+      </div>
+      <div class="col-span-3 text-left serif-body italic text-[12px] text-[color:var(--ink-soft)] leading-[1.7]">
+        右側 · 節期<br>
+        <span class="mono not-italic text-[10px] tracking-[0.15em]">FEASTS &amp; FASTS</span>
+      </div>
+    </div>
+
+    <!-- VERTICAL AXIS -->
+    <div class="relative mt-6 pb-6">
+      <!-- center vertical line -->
+      <div class="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[3px]" style="background:var(--ink)"></div>
+      <!-- top cap -->
+      <div class="relative h-6">
+        <div class="absolute left-1/2 -translate-x-1/2 top-0 mono text-[10px] tracking-[0.25em] bg-[color:var(--cream)] px-3 py-1 border border-[color:var(--ink)]">⊙ START · 尼散</div>
+      </div>
+
+      <!-- ROW · NISAN -->
+      <div class="grid grid-cols-12 gap-0 axis-row season-spring" style="min-height:88px">
+        <div class="col-span-5 pr-10 text-right py-4">
+          <div class="serif-display font-black text-[22px] season-num">尼散月 · Nisan</div>
+          <div class="mono text-[10px] tracking-[0.15em] mt-1">M01 · 3–4 月</div>
+          <div class="mono nano mt-1 text-[color:var(--ink-soft)]">大麥成熟 · 巴勒斯坦春末</div>
+        </div>
+        <div class="col-span-2 relative">
+          <div class="axis-hair-left"></div>
+          <div class="axis-hair-right"></div>
+          <div class="axis-tick"></div>
+          <div class="axis-tick-inner" style="background:#5b6b3a"></div>
+        </div>
+        <div class="col-span-5 pl-10 text-left py-4 serif-body text-[13px] space-y-1">
+          <div><span class="mono text-[10px] mr-2 inline-block w-12 season-num font-bold">14</span><strong>逾越節</strong> · Pesach</div>
+          <div><span class="mono text-[10px] mr-2 inline-block w-12 season-num font-bold">15–21</span><strong>無酵節</strong> · Hag HaMatzot</div>
+          <div><span class="mono text-[10px] mr-2 inline-block w-12 season-num font-bold">16</span><strong>初熟節</strong> · Bikkurim</div>
+        </div>
+      </div>
+
+      <!-- ROW · IYAR -->
+      <div class="grid grid-cols-12 gap-0 axis-row season-spring" style="min-height:72px">
+        <div class="col-span-5 pr-10 text-right py-4">
+          <div class="serif-display font-black text-[22px] season-num">以珥月 · Iyar</div>
+          <div class="mono text-[10px] tracking-[0.15em] mt-1">M02 · 4–5 月</div>
+          <div class="mono nano mt-1 text-[color:var(--ink-soft)]">補課之月 · 寬容之月</div>
+        </div>
+        <div class="col-span-2 relative">
+          <div class="axis-hair-left"></div>
+          <div class="axis-hair-right"></div>
+          <div class="axis-tick"></div>
+          <div class="axis-tick-inner" style="background:#5b6b3a"></div>
+        </div>
+        <div class="col-span-5 pl-10 text-left py-4 serif-body text-[13px] space-y-1">
+          <div><span class="mono text-[10px] mr-2 inline-block w-12 season-num font-bold">14</span><strong>第二逾越節</strong> · Pesach Sheni</div>
+        </div>
+      </div>
+
+      <!-- ROW · SIVAN -->
+      <div class="grid grid-cols-12 gap-0 axis-row season-spring" style="min-height:72px">
+        <div class="col-span-5 pr-10 text-right py-4">
+          <div class="serif-display font-black text-[22px] season-num">西彎月 · Sivan</div>
+          <div class="mono text-[10px] tracking-[0.15em] mt-1">M03 · 5–6 月</div>
+          <div class="mono nano mt-1 text-[color:var(--ink-soft)]">小麥成熟 · 律法之火</div>
+        </div>
+        <div class="col-span-2 relative">
+          <div class="axis-hair-left"></div>
+          <div class="axis-hair-right"></div>
+          <div class="axis-tick"></div>
+          <div class="axis-tick-inner" style="background:#5b6b3a"></div>
+        </div>
+        <div class="col-span-5 pl-10 text-left py-4 serif-body text-[13px] space-y-1">
+          <div><span class="mono text-[10px] mr-2 inline-block w-12 season-num font-bold">06</span><strong>七七節 / 五旬節</strong> · Shavuot</div>
+        </div>
+      </div>
+
+      <!-- SEASON DIVIDER · SPRING → SUMMER -->
+      <div class="relative my-2">
+        <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 mono text-[9px] tracking-[0.25em] px-3 py-1 z-10" style="background:#5b6b3a;color:var(--cream)">春 · REDEMPTION ▾</div>
+        <div class="border-t border-dashed border-[color:rgba(26,22,18,0.35)] h-px"></div>
+      </div>
+
+      <!-- ROW · TAMMUZ -->
+      <div class="grid grid-cols-12 gap-0 axis-row season-summer" style="min-height:72px">
+        <div class="col-span-5 pr-10 text-right py-4">
+          <div class="serif-display font-black text-[22px] season-num">搭模斯月 · Tammuz</div>
+          <div class="mono text-[10px] tracking-[0.15em] mt-1">M04 · 6–7 月</div>
+          <div class="mono nano mt-1 text-[color:var(--ink-soft)]">三週哀悼期之始</div>
+        </div>
+        <div class="col-span-2 relative">
+          <div class="axis-hair-left"></div>
+          <div class="axis-hair-right"></div>
+          <div class="axis-tick"></div>
+          <div class="axis-tick-inner" style="background:#a8341f"></div>
+        </div>
+        <div class="col-span-5 pl-10 text-left py-4 serif-body text-[13px] space-y-1">
+          <div><span class="mono text-[10px] mr-2 inline-block w-12 season-num font-bold">17</span><strong>搭模斯禁食</strong> · 城破之日</div>
+        </div>
+      </div>
+
+      <!-- ROW · AV -->
+      <div class="grid grid-cols-12 gap-0 axis-row season-summer" style="min-height:72px">
+        <div class="col-span-5 pr-10 text-right py-4">
+          <div class="serif-display font-black text-[22px] season-num">埃波月 · Av</div>
+          <div class="mono text-[10px] tracking-[0.15em] mt-1">M05 · 7–8 月</div>
+          <div class="mono nano mt-1 text-[color:var(--ink-soft)]">兩座聖殿 · 一個焚日</div>
+        </div>
+        <div class="col-span-2 relative">
+          <div class="axis-hair-left"></div>
+          <div class="axis-hair-right"></div>
+          <div class="axis-tick"></div>
+          <div class="axis-tick-inner" style="background:#a8341f"></div>
+        </div>
+        <div class="col-span-5 pl-10 text-left py-4 serif-body text-[13px] space-y-1">
+          <div><span class="mono text-[10px] mr-2 inline-block w-12 season-num font-bold">09</span><strong>聖殿被毀日</strong> · Tisha B'Av</div>
+        </div>
+      </div>
+
+      <!-- ROW · ELUL -->
+      <div class="grid grid-cols-12 gap-0 axis-row season-summer" style="min-height:72px">
+        <div class="col-span-5 pr-10 text-right py-4">
+          <div class="serif-display font-black text-[22px] season-num">以祿月 · Elul</div>
+          <div class="mono text-[10px] tracking-[0.15em] mt-1">M06 · 8–9 月</div>
+          <div class="mono nano mt-1 text-[color:var(--ink-soft)]">每日吹角 · 預備大日</div>
+        </div>
+        <div class="col-span-2 relative">
+          <div class="axis-hair-left"></div>
+          <div class="axis-hair-right"></div>
+          <div class="axis-tick"></div>
+          <div class="axis-tick-inner" style="background:#a8341f"></div>
+        </div>
+        <div class="col-span-5 pl-10 text-left py-4 serif-body text-[13px] space-y-1">
+          <div><span class="mono text-[10px] mr-2 inline-block w-12 italic text-[color:var(--ink-soft)]">—</span><strong>悔改預備月</strong> · 30 days of Teshuvah</div>
+        </div>
+      </div>
+
+      <!-- SEASON DIVIDER · SUMMER → FALL -->
+      <div class="relative my-2">
+        <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 mono text-[9px] tracking-[0.25em] px-3 py-1 z-10" style="background:#a8341f;color:var(--cream)">夏 · MOURNING ▾</div>
+        <div class="border-t border-dashed border-[color:rgba(26,22,18,0.35)] h-px"></div>
+      </div>
+
+      <!-- ROW · TISHRI -->
+      <div class="grid grid-cols-12 gap-0 axis-row season-fall" style="min-height:112px">
+        <div class="col-span-5 pr-10 text-right py-4">
+          <div class="serif-display font-black text-[22px] season-num">提斯利月 · Tishri</div>
+          <div class="mono text-[10px] tracking-[0.15em] mt-1">M07 · 9–10 月</div>
+          <div class="mono nano mt-1 text-[color:var(--ink-soft)]">民曆新年 · 四節之月</div>
+        </div>
+        <div class="col-span-2 relative">
+          <div class="axis-hair-left"></div>
+          <div class="axis-hair-right"></div>
+          <div class="axis-tick"></div>
+          <div class="axis-tick-inner" style="background:#a87f2e"></div>
+        </div>
+        <div class="col-span-5 pl-10 text-left py-4 serif-body text-[13px] space-y-1">
+          <div><span class="mono text-[10px] mr-2 inline-block w-12 season-num font-bold">1–2</span><strong>吹角節</strong> · Rosh Hashanah</div>
+          <div><span class="mono text-[10px] mr-2 inline-block w-12 season-num font-bold">10</span><strong>贖罪日</strong> · Yom Kippur</div>
+          <div><span class="mono text-[10px] mr-2 inline-block w-12 season-num font-bold">15–21</span><strong>住棚節</strong> · Sukkot</div>
+          <div><span class="mono text-[10px] mr-2 inline-block w-12 season-num font-bold">22</span><strong>聖會末日</strong> · Shemini Atzeret</div>
+        </div>
+      </div>
+
+      <!-- ROW · CHESHVAN -->
+      <div class="grid grid-cols-12 gap-0 axis-row season-fall" style="min-height:72px">
+        <div class="col-span-5 pr-10 text-right py-4">
+          <div class="serif-display font-black text-[22px] season-num">馬西班月 · Cheshvan</div>
+          <div class="mono text-[10px] tracking-[0.15em] mt-1">M08 · 10–11 月</div>
+          <div class="mono nano mt-1 text-[color:var(--ink-soft)]">秋雨之始 · 留白之月</div>
+        </div>
+        <div class="col-span-2 relative">
+          <div class="axis-hair-left"></div>
+          <div class="axis-hair-right"></div>
+          <div class="axis-tick"></div>
+          <div class="axis-tick-inner" style="background:#a87f2e;opacity:0.4"></div>
+        </div>
+        <div class="col-span-5 pl-10 text-left py-4 serif-body text-[13px] space-y-1">
+          <div><span class="mono text-[10px] mr-2 inline-block w-12 italic text-[color:var(--ink-soft)]">—</span><span class="italic text-[color:var(--ink-soft)]">無節期之月 · "Mar-Cheshvan"</span></div>
+        </div>
+      </div>
+
+      <!-- ROW · KISLEV -->
+      <div class="grid grid-cols-12 gap-0 axis-row season-fall" style="min-height:72px">
+        <div class="col-span-5 pr-10 text-right py-4">
+          <div class="serif-display font-black text-[22px] season-num">基斯流月 · Kislev</div>
+          <div class="mono text-[10px] tracking-[0.15em] mt-1">M09 · 11–12 月</div>
+          <div class="mono nano mt-1 text-[color:var(--ink-soft)]">光明節 · 八日燭火</div>
+        </div>
+        <div class="col-span-2 relative">
+          <div class="axis-hair-left"></div>
+          <div class="axis-hair-right"></div>
+          <div class="axis-tick"></div>
+          <div class="axis-tick-inner" style="background:#a87f2e"></div>
+        </div>
+        <div class="col-span-5 pl-10 text-left py-4 serif-body text-[13px] space-y-1">
+          <div><span class="mono text-[10px] mr-2 inline-block w-12 season-num font-bold">25</span><strong>修殿節</strong> · Hanukkah (起)</div>
+        </div>
+      </div>
+
+      <!-- SEASON DIVIDER · FALL → WINTER -->
+      <div class="relative my-2">
+        <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 mono text-[9px] tracking-[0.25em] px-3 py-1 z-10" style="background:#a87f2e;color:var(--cream)">秋 · ASSEMBLY ▾</div>
+        <div class="border-t border-dashed border-[color:rgba(26,22,18,0.35)] h-px"></div>
+      </div>
+
+      <!-- ROW · TEVET -->
+      <div class="grid grid-cols-12 gap-0 axis-row season-winter" style="min-height:72px">
+        <div class="col-span-5 pr-10 text-right py-4">
+          <div class="serif-display font-black text-[22px] season-num">提別月 · Tevet</div>
+          <div class="mono text-[10px] tracking-[0.15em] mt-1">M10 · 12–1 月</div>
+          <div class="mono nano mt-1 text-[color:var(--ink-soft)]">寒冬之始 · 城被圍之日</div>
+        </div>
+        <div class="col-span-2 relative">
+          <div class="axis-hair-left"></div>
+          <div class="axis-hair-right"></div>
+          <div class="axis-tick"></div>
+          <div class="axis-tick-inner" style="background:#2a4a5b"></div>
+        </div>
+        <div class="col-span-5 pl-10 text-left py-4 serif-body text-[13px] space-y-1">
+          <div><span class="mono text-[10px] mr-2 inline-block w-12 season-num font-bold">10</span><strong>圍城禁食</strong> · Asarah B'Tevet</div>
+        </div>
+      </div>
+
+      <!-- ROW · SHEVAT -->
+      <div class="grid grid-cols-12 gap-0 axis-row season-winter" style="min-height:72px">
+        <div class="col-span-5 pr-10 text-right py-4">
+          <div class="serif-display font-black text-[22px] season-num">細罷特月 · Shevat</div>
+          <div class="mono text-[10px] tracking-[0.15em] mt-1">M11 · 1–2 月</div>
+          <div class="mono nano mt-1 text-[color:var(--ink-soft)]">樹液上升 · 七果之日</div>
+        </div>
+        <div class="col-span-2 relative">
+          <div class="axis-hair-left"></div>
+          <div class="axis-hair-right"></div>
+          <div class="axis-tick"></div>
+          <div class="axis-tick-inner" style="background:#2a4a5b"></div>
+        </div>
+        <div class="col-span-5 pl-10 text-left py-4 serif-body text-[13px] space-y-1">
+          <div><span class="mono text-[10px] mr-2 inline-block w-12 season-num font-bold">15</span><strong>樹木新年</strong> · Tu BiShvat</div>
+        </div>
+      </div>
+
+      <!-- ROW · ADAR -->
+      <div class="grid grid-cols-12 gap-0 axis-row season-winter" style="min-height:72px">
+        <div class="col-span-5 pr-10 text-right py-4">
+          <div class="serif-display font-black text-[22px] season-num">亞達月 · Adar</div>
+          <div class="mono text-[10px] tracking-[0.15em] mt-1">M12 · 2–3 月</div>
+          <div class="mono nano mt-1 text-[color:var(--ink-soft)]">以斯帖記 · 凶吉翻轉</div>
+        </div>
+        <div class="col-span-2 relative">
+          <div class="axis-hair-left"></div>
+          <div class="axis-hair-right"></div>
+          <div class="axis-tick"></div>
+          <div class="axis-tick-inner" style="background:#2a4a5b"></div>
+        </div>
+        <div class="col-span-5 pl-10 text-left py-4 serif-body text-[13px] space-y-1">
+          <div><span class="mono text-[10px] mr-2 inline-block w-12 season-num font-bold">14–15</span><strong>普珥節</strong> · Purim</div>
+        </div>
+      </div>
+
+      <!-- bottom cap -->
+      <div class="relative h-6">
+        <div class="absolute left-1/2 -translate-x-1/2 bottom-0 mono text-[10px] tracking-[0.25em] bg-[color:var(--cream)] px-3 py-1 border border-[color:var(--ink)]">◉ END · 亞達 ↻ NISAN</div>
+      </div>
+    </div>
+
+    <p class="serif-body italic text-[12px] text-center text-[color:var(--ink-soft)] mt-3">
+      整條軸線, 是宗教年自尼散月起的一次完整呼吸; 終於亞達, 復又回到尼散, 周而復始。
+    </p>
+  </section>
+
+  <div class="rule-thick mt-12"></div>
+  <div class="parallax-band my-1"></div>
+
+  <!-- ============ TABLE OF CONTENTS / PARALLAX MAP ============ -->
+  <section class="mt-10">
+    <div class="flex items-end justify-between mb-4">
+      <h2 class="serif-display italic text-[28px] font-bold">Parallax Map · 視差地圖</h2>
+      <span class="mono text-[10px] tracking-[0.2em]">FIG. 01 — FOUR SEASONS, TWELVE MOONS</span>
+    </div>
+    <div class="rule-thin"></div>
+
+    <div class="grid grid-cols-12 gap-0 mt-6 border border-[color:var(--ink)]">
+      <!-- Spring -->
+      <div class="col-span-3 season-spring p-5 border-r border-[color:var(--ink)]">
+        <div class="season-chip inline-block px-2 py-1 text-[10px]">§ I · SPRING</div>
+        <h3 class="serif-display font-black text-[26px] mt-3 leading-none season-num">春</h3>
+        <p class="mono text-[10px] mt-1 uppercase">救贖之季 · Redemption</p>
+        <ul class="mt-4 micro space-y-1">
+          <li>Nisan · 尼散月</li>
+          <li>Iyar · 以珥月</li>
+          <li>Sivan · 西彎月</li>
+        </ul>
+        <div class="mono nano mt-4">3 MOONS · 4 FEASTS</div>
+      </div>
+      <!-- Summer -->
+      <div class="col-span-3 season-summer p-5 border-r border-[color:var(--ink)]">
+        <div class="season-chip inline-block px-2 py-1 text-[10px]">§ II · SUMMER</div>
+        <h3 class="serif-display font-black text-[26px] mt-3 leading-none season-num">夏</h3>
+        <p class="mono text-[10px] mt-1 uppercase">哀悼之季 · Mourning</p>
+        <ul class="mt-4 micro space-y-1">
+          <li>Tammuz · 搭模斯月</li>
+          <li>Av · 埃波月</li>
+          <li>Elul · 以祿月</li>
+        </ul>
+        <div class="mono nano mt-4">3 MOONS · 2 FASTS</div>
+      </div>
+      <!-- Fall -->
+      <div class="col-span-3 season-fall p-5 border-r border-[color:var(--ink)]">
+        <div class="season-chip inline-block px-2 py-1 text-[10px]">§ III · AUTUMN</div>
+        <h3 class="serif-display font-black text-[26px] mt-3 leading-none season-num">秋</h3>
+        <p class="mono text-[10px] mt-1 uppercase">聖會之季 · Holy Assembly</p>
+        <ul class="mt-4 micro space-y-1">
+          <li>Tishri · 提斯利月</li>
+          <li>Cheshvan · 馬西班月</li>
+          <li>Kislev · 基斯流月</li>
+        </ul>
+        <div class="mono nano mt-4">3 MOONS · 5 FEASTS</div>
+      </div>
+      <!-- Winter -->
+      <div class="col-span-3 season-winter p-5">
+        <div class="season-chip inline-block px-2 py-1 text-[10px]">§ IV · WINTER</div>
+        <h3 class="serif-display font-black text-[26px] mt-3 leading-none season-num">冬</h3>
+        <p class="mono text-[10px] mt-1 uppercase">盼望之季 · Hope</p>
+        <ul class="mt-4 micro space-y-1">
+          <li>Tevet · 提別月</li>
+          <li>Shevat · 細罷特月</li>
+          <li>Adar · 亞達月</li>
+        </ul>
+        <div class="mono nano mt-4">3 MOONS · 3 FEASTS</div>
+      </div>
+    </div>
+
+    <!-- Parallax layered bar -->
+    <div class="mt-6 space-y-1">
+      <div class="parallax-band" style="opacity:0.25"></div>
+      <div class="parallax-band" style="opacity:0.5"></div>
+      <div class="parallax-band" style="opacity:0.75"></div>
+      <div class="parallax-band"></div>
+      <div class="flex justify-between mono nano mt-2 text-[color:var(--ink-soft)]">
+        <span>FOREGROUND · 節期 · FEASTS</span>
+        <span>MIDGROUND · 月份 · MOONS</span>
+        <span>BACKGROUND · 季節 · SEASONS</span>
+        <span>HORIZON · 宗教年 · LITURGICAL YEAR</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule-thick mt-12"></div>
+
+  <!-- ============ SECTION I · SPRING ============ -->
+  <section class="mt-12 season-spring">
+    <div class="grid grid-cols-12 gap-6 items-end">
+      <div class="col-span-2">
+        <div class="section-num season-num text-[110px] leading-[0.85]">I</div>
+        <div class="mono text-[10px] tracking-[0.2em]">§ ONE OF FOUR</div>
+      </div>
+      <div class="col-span-10">
+        <div class="ornament text-[12px]">✦ ✦ ✦</div>
+        <h2 class="serif-display font-black text-[58px] leading-[0.95] mt-2">
+          春．<span class="italic season-num">救贖</span>之季
+        </h2>
+        <p class="serif-body italic text-[15px] mt-3 text-[color:var(--ink-soft)] max-w-[55ch]">
+          The Season of Redemption — 三個月、四個節期, 從逾越的血到五旬節的火, 一切都在重新開始。
+        </p>
+      </div>
+    </div>
+    <div class="rule-thin season-rule mt-6" style="border-top-color:var(--season)"></div>
+
+    <!-- Two column body -->
+    <div class="grid grid-cols-2 gap-10 col-rule mt-6 serif-body text-[14px] leading-[1.7]">
+      <div>
+        <p>
+          當 <span class="small-cap">尼散月</span> 的初一新月升起,
+          以色列人在記憶裡重新出走一次埃及。曆法的時鐘在這一刻歸零;
+          土地的時鐘卻早已運轉 —— 大麥已熟、初熟果子已綻、巴勒斯坦的春雨正在退場。
+          在 parallax 的最前景, 是 <strong>14 日的逾越節羔羊</strong>;
+          再往後一層, 是 <strong>15 至 21 日</strong> 連續七天不見酵的家;
+          更遠處, 是 <strong>16 日</strong> 第一捆大麥被搖獻於耶和華面前的清晨。
+        </p>
+        <p class="mt-4">
+          <span class="small-cap">以珥月</span> 是介於兩個大節之間的喘息 ——
+          它幾乎沒有自己的儀式, 只為了那些路途遙遠或禮儀不潔、
+          在尼散月趕不上逾越節的人, 留下了
+          <span class="italic-accent">14 日的第二逾越節 (Pesach Sheni)</span> 作為補課。
+          這是一個寬容的月份, 它告訴讀者: 時間不會永遠等你, 但會給你一次補考。
+        </p>
+      </div>
+      <div>
+        <p>
+          再往前數五十天, 便到了 <span class="small-cap">西彎月</span> 的第六日 ——
+          <strong class="italic-accent">七七節 (Shavuot)</strong>,
+          基督徒稱之為五旬節。它的前景是大麥到小麥的轉換、
+          初熟果子被獻上耶路撒冷; 它的中景, 是西乃山頂的雷與律法的字;
+          它的最遠處, 則是兩千年後耶路撒冷馬可樓上的火舌與方言。
+        </p>
+        <div class="pull-quote my-5 px-5 py-4 text-[18px] leading-snug" style="background:rgba(91,107,58,0.08)">
+          「在你們的居所, 從安息日的次日獻禾捆為搖祭的那日算起, 要計算七個整安息日。」
+          <span class="block mono text-[10px] not-italic mt-2 text-[color:var(--ink-soft)]">— Leviticus 23:15</span>
+        </div>
+        <p>
+          春季在 parallax 上有最快的前景速度: 三個月之內, 四個節期接連發生,
+          像底片在投影機上連續跳格 —— 救贖之季從不允許讀者停下來。
+        </p>
+      </div>
+    </div>
+
+    <!-- Month cards -->
+    <div class="grid grid-cols-3 gap-4 mt-8">
+      <!-- Nisan -->
+      <div class="month-card p-5 season-rule" style="border-color:var(--season)">
+        <div class="flex items-baseline justify-between">
+          <h4 class="serif-display font-black text-[24px] season-num">尼散月</h4>
+          <span class="mono text-[10px]">3–4 月</span>
+        </div>
+        <div class="mono text-[10px] tracking-[0.2em] season-num uppercase mt-1">Nisan · M01</div>
+        <div class="rule-hair mt-3 mb-3"></div>
+        <ul class="micro space-y-2">
+          <li class="feast-row pb-2 flex"><span class="mono w-12 season-num font-bold">14</span><span><strong>逾越節</strong> · Pesach</span></li>
+          <li class="feast-row py-2 flex"><span class="mono w-12 season-num font-bold">15–21</span><span><strong>無酵節</strong> · Hag HaMatzot</span></li>
+          <li class="feast-row pt-2 flex"><span class="mono w-12 season-num font-bold">16</span><span><strong>初熟節</strong> · Bikkurim</span></li>
+        </ul>
+        <div class="mono nano mt-3 text-[color:var(--ink-soft)]">大麥成熟 · 巴勒斯坦春末</div>
+      </div>
+      <!-- Iyar -->
+      <div class="month-card p-5 season-rule" style="border-color:var(--season)">
+        <div class="flex items-baseline justify-between">
+          <h4 class="serif-display font-black text-[24px] season-num">以珥月</h4>
+          <span class="mono text-[10px]">4–5 月</span>
+        </div>
+        <div class="mono text-[10px] tracking-[0.2em] season-num uppercase mt-1">Iyar · M02</div>
+        <div class="rule-hair mt-3 mb-3"></div>
+        <ul class="micro space-y-2">
+          <li class="feast-row pb-2 flex"><span class="mono w-12 season-num font-bold">14</span><span><strong>第二逾越節</strong> · Pesach Sheni</span></li>
+        </ul>
+        <div class="mono nano mt-3 text-[color:var(--ink-soft)]">補課之月 · 寬容之月</div>
+      </div>
+      <!-- Sivan -->
+      <div class="month-card p-5 season-rule" style="border-color:var(--season)">
+        <div class="flex items-baseline justify-between">
+          <h4 class="serif-display font-black text-[24px] season-num">西彎月</h4>
+          <span class="mono text-[10px]">5–6 月</span>
+        </div>
+        <div class="mono text-[10px] tracking-[0.2em] season-num uppercase mt-1">Sivan · M03</div>
+        <div class="rule-hair mt-3 mb-3"></div>
+        <ul class="micro space-y-2">
+          <li class="feast-row pb-2 flex"><span class="mono w-12 season-num font-bold">06</span><span><strong>七七節 / 五旬節</strong> · Shavuot</span></li>
+        </ul>
+        <div class="mono nano mt-3 text-[color:var(--ink-soft)]">小麥成熟 · 律法之火</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule-thick mt-14"></div>
+  <div class="parallax-band my-1"></div>
+
+  <!-- ============ SECTION II · SUMMER ============ -->
+  <section class="mt-12 season-summer">
+    <div class="grid grid-cols-12 gap-6 items-end">
+      <div class="col-span-2">
+        <div class="section-num season-num text-[110px] leading-[0.85]">II</div>
+        <div class="mono text-[10px] tracking-[0.2em]">§ TWO OF FOUR</div>
+      </div>
+      <div class="col-span-10">
+        <div class="ornament text-[12px]">✦ ✦ ✦</div>
+        <h2 class="serif-display font-black text-[58px] leading-[0.95] mt-2">
+          夏．<span class="italic season-num">哀悼</span>之季
+        </h2>
+        <p class="serif-body italic text-[15px] mt-3 text-[color:var(--ink-soft)] max-w-[55ch]">
+          The Season of Mourning — 三個月, 兩個禁食, 與一座被毀的聖殿的回聲。
+        </p>
+      </div>
+    </div>
+    <div class="rule-thin season-rule mt-6" style="border-top-color:var(--season)"></div>
+
+    <div class="grid grid-cols-2 gap-10 col-rule mt-6 serif-body text-[14px] leading-[1.7]">
+      <div>
+        <p>
+          夏天在 <span class="small-cap">搭模斯月</span> 拉開帷幕 ——
+          一個以美索不達米亞古神命名、卻被聖經反覆警誡的月份。
+          它的第 <strong class="italic-accent">17 日</strong>, 是耶路撒冷城牆被攻破的日子,
+          猶太人在這一天禁食, 紀念那道裂縫如何從一座城蔓延到一個民族的心。
+        </p>
+        <p class="mt-4">
+          隨後而來的 <span class="small-cap">埃波月</span>,
+          是整部猶太歷裡最沉重的月份。它的 <strong class="italic-accent">第 9 日 (Tisha B'Av)</strong>,
+          相傳是第一聖殿與第二聖殿先後被焚的同一天 ——
+          公元前 586 年的巴比倫之火, 公元 70 年的羅馬之火, 在 parallax 的最遠處重疊成一個焦點。
+          二十四小時的禁食、坐在地上、誦讀耶利米哀歌, 都是這個焦點的回聲。
+        </p>
+      </div>
+      <div>
+        <div class="pull-quote my-5 px-5 py-4 text-[18px] leading-snug" style="background:rgba(168,52,31,0.08)">
+          「先前滿有人民的城, 現在何竟獨坐!」
+          <span class="block mono text-[10px] not-italic mt-2 text-[color:var(--ink-soft)]">— Lamentations 1:1, recited on Tisha B'Av</span>
+        </div>
+        <p>
+          但夏季不止於哀悼。<span class="small-cap">以祿月</span> ——
+          整整三十天, 是一個沒有節期、只有預備的月份。
+          會堂裡每日吹響短號 (Shofar), 提醒人們秋季的大日子即將臨近;
+          人們在這個月寫信給仇敵、原諒朋友、修補婚姻、清點良心。
+          以祿月在前景上幾乎是空的, 在背景裡卻是整年最忙的月份 ——
+          因為悔改本身, 是一場無聲的工作。
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-4 mt-8">
+      <div class="month-card p-5" style="border-color:var(--season)">
+        <div class="flex items-baseline justify-between">
+          <h4 class="serif-display font-black text-[24px] season-num">搭模斯月</h4>
+          <span class="mono text-[10px]">6–7 月</span>
+        </div>
+        <div class="mono text-[10px] tracking-[0.2em] season-num uppercase mt-1">Tammuz · M04</div>
+        <div class="rule-hair mt-3 mb-3"></div>
+        <ul class="micro space-y-2">
+          <li class="feast-row pb-2 flex"><span class="mono w-12 season-num font-bold">17</span><span><strong>搭模斯禁食</strong> · 城破之日</span></li>
+        </ul>
+        <div class="mono nano mt-3 text-[color:var(--ink-soft)]">三週哀悼期之始</div>
+      </div>
+      <div class="month-card p-5" style="border-color:var(--season)">
+        <div class="flex items-baseline justify-between">
+          <h4 class="serif-display font-black text-[24px] season-num">埃波月</h4>
+          <span class="mono text-[10px]">7–8 月</span>
+        </div>
+        <div class="mono text-[10px] tracking-[0.2em] season-num uppercase mt-1">Av · M05</div>
+        <div class="rule-hair mt-3 mb-3"></div>
+        <ul class="micro space-y-2">
+          <li class="feast-row pb-2 flex"><span class="mono w-12 season-num font-bold">09</span><span><strong>聖殿被毀日</strong> · Tisha B'Av</span></li>
+        </ul>
+        <div class="mono nano mt-3 text-[color:var(--ink-soft)]">兩座聖殿 · 一個焚日</div>
+      </div>
+      <div class="month-card p-5" style="border-color:var(--season)">
+        <div class="flex items-baseline justify-between">
+          <h4 class="serif-display font-black text-[24px] season-num">以祿月</h4>
+          <span class="mono text-[10px]">8–9 月</span>
+        </div>
+        <div class="mono text-[10px] tracking-[0.2em] season-num uppercase mt-1">Elul · M06</div>
+        <div class="rule-hair mt-3 mb-3"></div>
+        <ul class="micro space-y-2">
+          <li class="feast-row pb-2 flex"><span class="mono w-12 italic">—</span><span><strong>悔改預備月</strong> · 30 days of Teshuvah</span></li>
+        </ul>
+        <div class="mono nano mt-3 text-[color:var(--ink-soft)]">每日吹角 · 預備大日</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule-thick mt-14"></div>
+  <div class="parallax-band my-1"></div>
+
+  <!-- ============ SECTION III · FALL ============ -->
+  <section class="mt-12 season-fall">
+    <div class="grid grid-cols-12 gap-6 items-end">
+      <div class="col-span-2">
+        <div class="section-num season-num text-[110px] leading-[0.85]">III</div>
+        <div class="mono text-[10px] tracking-[0.2em]">§ THREE OF FOUR</div>
+      </div>
+      <div class="col-span-10">
+        <div class="ornament text-[12px]">✦ ✦ ✦</div>
+        <h2 class="serif-display font-black text-[58px] leading-[0.95] mt-2">
+          秋．<span class="italic season-num">聖會</span>之季
+        </h2>
+        <p class="serif-body italic text-[15px] mt-3 text-[color:var(--ink-soft)] max-w-[55ch]">
+          The Season of Holy Assembly — 三個月份、五個節期, 整個民族在秋天集合一次。
+        </p>
+      </div>
+    </div>
+    <div class="rule-thin season-rule mt-6" style="border-top-color:var(--season)"></div>
+
+    <div class="grid grid-cols-2 gap-10 col-rule mt-6 serif-body text-[14px] leading-[1.7]">
+      <div>
+        <p>
+          <span class="small-cap">提斯利月</span> 的第一日, 號角破空 ——
+          這是 <strong class="italic-accent">吹角節 (Rosh Hashanah)</strong>,
+          民曆的新年, 上帝的審判庭開庭的日子。
+          十天之後, 是 <strong class="italic-accent">10 日的贖罪日 (Yom Kippur)</strong>,
+          全國禁食、白衣、靜默, 大祭司一年僅一次走進至聖所 ——
+          這是 parallax 上最慢、最深的一格畫面, 整個民族的呼吸都同步減速。
+        </p>
+        <p class="mt-4">
+          再過五日, 帳棚在城市與曠野同時搭起 ——
+          <strong class="italic-accent">15–21 日的住棚節 (Sukkot)</strong>,
+          紀念曠野四十年的飄流, 也慶祝秋收的歸倉。第八日的
+          <strong class="italic-accent">聖會末日 (Shemini Atzeret)</strong>
+          是一個額外的緩衝, 讓人不必立刻散去。
+        </p>
+      </div>
+      <div>
+        <div class="pull-quote my-5 px-5 py-4 text-[18px] leading-snug" style="background:rgba(168,127,46,0.08)">
+          「在七月十五日, 你們收藏了地的出產, 要守耶和華的節七日。」
+          <span class="block mono text-[10px] not-italic mt-2 text-[color:var(--ink-soft)]">— Leviticus 23:39</span>
+        </div>
+        <p>
+          <span class="small-cap">馬西班月</span> 是整年唯一沒有節期的月份 ——
+          一個被刻意留白的月份, 古拉比稱之為「苦的馬西班」(Mar-Cheshvan)。
+          但白並非空; 在它後面緊跟著 <span class="small-cap">基斯流月</span>,
+          <strong class="italic-accent">25 日的修殿節 (Hanukkah)</strong>
+          將連續八個夜晚點燃一盞燭, 紀念馬加比家族奪回聖殿、
+          一日之油燃燒八日的神蹟 —— 秋季的最後一筆, 落在冬至前的黑暗裡, 是光。
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-4 mt-8">
+      <div class="month-card p-5" style="border-color:var(--season)">
+        <div class="flex items-baseline justify-between">
+          <h4 class="serif-display font-black text-[24px] season-num">提斯利月</h4>
+          <span class="mono text-[10px]">9–10 月</span>
+        </div>
+        <div class="mono text-[10px] tracking-[0.2em] season-num uppercase mt-1">Tishri · M07</div>
+        <div class="rule-hair mt-3 mb-3"></div>
+        <ul class="micro space-y-2">
+          <li class="feast-row pb-2 flex"><span class="mono w-12 season-num font-bold">1–2</span><span><strong>吹角節</strong> · Rosh Hashanah</span></li>
+          <li class="feast-row py-2 flex"><span class="mono w-12 season-num font-bold">10</span><span><strong>贖罪日</strong> · Yom Kippur</span></li>
+          <li class="feast-row py-2 flex"><span class="mono w-12 season-num font-bold">15–21</span><span><strong>住棚節</strong> · Sukkot</span></li>
+          <li class="feast-row pt-2 flex"><span class="mono w-12 season-num font-bold">22</span><span><strong>聖會末日</strong> · Shemini Atzeret</span></li>
+        </ul>
+        <div class="mono nano mt-3 text-[color:var(--ink-soft)]">民曆新年 · 四節之月</div>
+      </div>
+      <div class="month-card p-5" style="border-color:var(--season)">
+        <div class="flex items-baseline justify-between">
+          <h4 class="serif-display font-black text-[24px] season-num">馬西班月</h4>
+          <span class="mono text-[10px]">10–11 月</span>
+        </div>
+        <div class="mono text-[10px] tracking-[0.2em] season-num uppercase mt-1">Cheshvan · M08</div>
+        <div class="rule-hair mt-3 mb-3"></div>
+        <ul class="micro space-y-2">
+          <li class="feast-row pb-2 flex"><span class="mono w-12 italic">—</span><span><strong>無節期之月</strong> · "Mar-Cheshvan"</span></li>
+        </ul>
+        <div class="mono nano mt-3 text-[color:var(--ink-soft)]">秋雨之始 · 留白之月</div>
+      </div>
+      <div class="month-card p-5" style="border-color:var(--season)">
+        <div class="flex items-baseline justify-between">
+          <h4 class="serif-display font-black text-[24px] season-num">基斯流月</h4>
+          <span class="mono text-[10px]">11–12 月</span>
+        </div>
+        <div class="mono text-[10px] tracking-[0.2em] season-num uppercase mt-1">Kislev · M09</div>
+        <div class="rule-hair mt-3 mb-3"></div>
+        <ul class="micro space-y-2">
+          <li class="feast-row pb-2 flex"><span class="mono w-12 season-num font-bold">25</span><span><strong>修殿節</strong> · Hanukkah (起)</span></li>
+        </ul>
+        <div class="mono nano mt-3 text-[color:var(--ink-soft)]">光明節 · 八日燭火</div>
+      </div>
+    </div>
+
+    <!-- Hanukkah menorah ASCII -->
+    <div class="mt-6 border-t border-b border-[color:var(--ink)] py-4">
+      <div class="text-center ascii-art">
+   ★    ★    ★    ★    ★    ★    ★    ★    ★
+   |    |    |    |    |    |    |    |    |
+   |    |    |    |    |    |    |    |    |
+═══════════════════════════════════════════════
+             |                  |
+             |        ❖         |
+             └──────────────────┘
+                     ╔╗
+                     ╚╝
+      </div>
+      <div class="text-center mono nano mt-2 text-[color:var(--ink-soft)]">FIG. 02 — MENORAH · 九枝燈臺 · 八夜 + 中央僕燭</div>
+    </div>
+  </section>
+
+  <div class="rule-thick mt-14"></div>
+  <div class="parallax-band my-1"></div>
+
+  <!-- ============ SECTION IV · WINTER ============ -->
+  <section class="mt-12 season-winter">
+    <div class="grid grid-cols-12 gap-6 items-end">
+      <div class="col-span-2">
+        <div class="section-num season-num text-[110px] leading-[0.85]">IV</div>
+        <div class="mono text-[10px] tracking-[0.2em]">§ FOUR OF FOUR</div>
+      </div>
+      <div class="col-span-10">
+        <div class="ornament text-[12px]">✦ ✦ ✦</div>
+        <h2 class="serif-display font-black text-[58px] leading-[0.95] mt-2">
+          冬．<span class="italic season-num">盼望</span>之季
+        </h2>
+        <p class="serif-body italic text-[15px] mt-3 text-[color:var(--ink-soft)] max-w-[55ch]">
+          The Season of Hope — 寒冬、樹木、與一卷以斯帖記, 把宗教年合上又重新打開。
+        </p>
+      </div>
+    </div>
+    <div class="rule-thin season-rule mt-6" style="border-top-color:var(--season)"></div>
+
+    <div class="grid grid-cols-2 gap-10 col-rule mt-6 serif-body text-[14px] leading-[1.7]">
+      <div>
+        <p>
+          <span class="small-cap">提別月</span> 的 <strong class="italic-accent">第 10 日</strong>,
+          是 <strong>圍城禁食 (Asarah B'Tevet)</strong> ——
+          紀念尼布甲尼撒在公元前 588 年開始圍困耶路撒冷的那一日。
+          這是一年中四個與聖殿被毀有關的禁食日之一,
+          在 parallax 的遠景上, 它與夏天的搭模斯禁食、埃波九日連成一條看不見的紅線。
+        </p>
+        <p class="mt-4">
+          但冬天並非只有禁食。<span class="small-cap">細罷特月</span> 的
+          <strong class="italic-accent">15 日</strong>, 是
+          <strong class="italic-accent">樹木新年 (Tu BiShvat)</strong> ——
+          一個輕盈的、幾乎像是植物的節日:
+          這一天決定一棵樹的果子在律法上屬於哪一年,
+          因此今天的以色列人會在這天種樹、吃七種果實、為土地禱告。
+          當冬雨還在落下, 樹液已開始上升 —— 盼望的時鐘走在最深處。
+        </p>
+      </div>
+      <div>
+        <div class="pull-quote my-5 px-5 py-4 text-[18px] leading-snug" style="background:rgba(42,74,91,0.08)">
+          「猶大人脫離仇敵, 得享平安; 凶月變為吉月, 哀日變為節日。」
+          <span class="block mono text-[10px] not-italic mt-2 text-[color:var(--ink-soft)]">— Esther 9:22, on the institution of Purim</span>
+        </div>
+        <p>
+          終章是 <span class="small-cap">亞達月</span>, 第
+          <strong class="italic-accent">14–15 日</strong>
+          的 <strong>普珥節 (Purim)</strong> ——
+          王后以斯帖、宰相哈曼、與一卷拈鬮抽出的籤。
+          這是一個飲酒、贈禮、扮裝、誦讀以斯帖記的歡騰節日,
+          它讓整個宗教年以笑聲收場 —— 不是因為苦難結束,
+          而是因為救贖總會, 透過一個從未直接出現的上帝, 在最後一頁出現。
+          下一個月, 又是尼散。視差捲動, 重新開始。
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-4 mt-8">
+      <div class="month-card p-5" style="border-color:var(--season)">
+        <div class="flex items-baseline justify-between">
+          <h4 class="serif-display font-black text-[24px] season-num">提別月</h4>
+          <span class="mono text-[10px]">12–1 月</span>
+        </div>
+        <div class="mono text-[10px] tracking-[0.2em] season-num uppercase mt-1">Tevet · M10</div>
+        <div class="rule-hair mt-3 mb-3"></div>
+        <ul class="micro space-y-2">
+          <li class="feast-row pb-2 flex"><span class="mono w-12 season-num font-bold">10</span><span><strong>圍城禁食</strong> · Asarah B'Tevet</span></li>
+        </ul>
+        <div class="mono nano mt-3 text-[color:var(--ink-soft)]">寒冬之始 · 城被圍之日</div>
+      </div>
+      <div class="month-card p-5" style="border-color:var(--season)">
+        <div class="flex items-baseline justify-between">
+          <h4 class="serif-display font-black text-[24px] season-num">細罷特月</h4>
+          <span class="mono text-[10px]">1–2 月</span>
+        </div>
+        <div class="mono text-[10px] tracking-[0.2em] season-num uppercase mt-1">Shevat · M11</div>
+        <div class="rule-hair mt-3 mb-3"></div>
+        <ul class="micro space-y-2">
+          <li class="feast-row pb-2 flex"><span class="mono w-12 season-num font-bold">15</span><span><strong>樹木新年</strong> · Tu BiShvat</span></li>
+        </ul>
+        <div class="mono nano mt-3 text-[color:var(--ink-soft)]">樹液上升 · 七果之日</div>
+      </div>
+      <div class="month-card p-5" style="border-color:var(--season)">
+        <div class="flex items-baseline justify-between">
+          <h4 class="serif-display font-black text-[24px] season-num">亞達月</h4>
+          <span class="mono text-[10px]">2–3 月</span>
+        </div>
+        <div class="mono text-[10px] tracking-[0.2em] season-num uppercase mt-1">Adar · M12</div>
+        <div class="rule-hair mt-3 mb-3"></div>
+        <ul class="micro space-y-2">
+          <li class="feast-row pb-2 flex"><span class="mono w-12 season-num font-bold">14–15</span><span><strong>普珥節</strong> · Purim</span></li>
+        </ul>
+        <div class="mono nano mt-3 text-[color:var(--ink-soft)]">以斯帖記 · 凶吉翻轉</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule-thick mt-14"></div>
+  <div class="parallax-band my-1"></div>
+
+  <!-- ============ SECTION V · TIMELINE STRIP ============ -->
+  <section class="mt-12">
+    <div class="grid grid-cols-12 gap-6 items-end">
+      <div class="col-span-2">
+        <div class="section-num text-[110px] leading-[0.85]">V</div>
+        <div class="mono text-[10px] tracking-[0.2em]">§ APPENDIX · A</div>
+      </div>
+      <div class="col-span-10">
+        <h2 class="serif-display font-black text-[44px] leading-[0.95]">
+          The <span class="italic italic-accent">Parallax</span> Strip · 全年帶狀視差圖
+        </h2>
+        <p class="serif-body italic text-[14px] mt-2 text-[color:var(--ink-soft)] max-w-[60ch]">
+          將整年的十二個月份壓縮為一條報紙寬度的長帶 —— 三層前後景, 由近至遠依次是節期、月份、季節。
+        </p>
+      </div>
+    </div>
+    <div class="rule-thin mt-6"></div>
+
+    <!-- Layer 1: Feasts (foreground) -->
+    <div class="mt-6">
+      <div class="mono nano mb-1 text-[color:var(--ink-soft)]">LAYER 01 · FOREGROUND · FEASTS &amp; FASTS · 14 events</div>
+      <div class="grid grid-cols-12 gap-px bg-[color:var(--ink)] border border-[color:var(--ink)]">
+        <div class="bg-[#f4ecd8] p-2 text-center"><div class="mono text-[9px]">N·14</div><div class="text-[10px] serif-body" style="color:#5b6b3a">逾越</div></div>
+        <div class="bg-[#f4ecd8] p-2 text-center"><div class="mono text-[9px]">N·15-21</div><div class="text-[10px] serif-body" style="color:#5b6b3a">無酵</div></div>
+        <div class="bg-[#f4ecd8] p-2 text-center"><div class="mono text-[9px]">I·14</div><div class="text-[10px] serif-body" style="color:#5b6b3a">二逾</div></div>
+        <div class="bg-[#f4ecd8] p-2 text-center"><div class="mono text-[9px]">S·06</div><div class="text-[10px] serif-body" style="color:#5b6b3a">七七</div></div>
+        <div class="bg-[#f4ecd8] p-2 text-center"><div class="mono text-[9px]">T·17</div><div class="text-[10px] serif-body" style="color:#a8341f">城破</div></div>
+        <div class="bg-[#f4ecd8] p-2 text-center"><div class="mono text-[9px]">A·09</div><div class="text-[10px] serif-body" style="color:#a8341f">殿毀</div></div>
+        <div class="bg-[#f4ecd8] p-2 text-center"><div class="mono text-[9px]">Ti·1-2</div><div class="text-[10px] serif-body" style="color:#a87f2e">吹角</div></div>
+        <div class="bg-[#f4ecd8] p-2 text-center"><div class="mono text-[9px]">Ti·10</div><div class="text-[10px] serif-body" style="color:#a87f2e">贖罪</div></div>
+        <div class="bg-[#f4ecd8] p-2 text-center"><div class="mono text-[9px]">Ti·15-22</div><div class="text-[10px] serif-body" style="color:#a87f2e">住棚</div></div>
+        <div class="bg-[#f4ecd8] p-2 text-center"><div class="mono text-[9px]">K·25</div><div class="text-[10px] serif-body" style="color:#a87f2e">修殿</div></div>
+        <div class="bg-[#f4ecd8] p-2 text-center"><div class="mono text-[9px]">Te·10</div><div class="text-[10px] serif-body" style="color:#2a4a5b">圍城</div></div>
+        <div class="bg-[#f4ecd8] p-2 text-center"><div class="mono text-[9px]">Sh·15·Ad·14</div><div class="text-[10px] serif-body" style="color:#2a4a5b">樹/普</div></div>
+      </div>
+    </div>
+
+    <!-- Layer 2: Months (midground) -->
+    <div class="mt-4">
+      <div class="mono nano mb-1 text-[color:var(--ink-soft)]">LAYER 02 · MIDGROUND · TWELVE MOONS</div>
+      <div class="grid grid-cols-12 gap-px bg-[color:var(--ink)] border border-[color:var(--ink)]">
+        <div class="bg-[#ece2c8] p-3 text-center"><div class="serif-display font-bold text-[13px]">尼散</div><div class="mono text-[8px]">M01</div></div>
+        <div class="bg-[#ece2c8] p-3 text-center"><div class="serif-display font-bold text-[13px]">以珥</div><div class="mono text-[8px]">M02</div></div>
+        <div class="bg-[#ece2c8] p-3 text-center"><div class="serif-display font-bold text-[13px]">西彎</div><div class="mono text-[8px]">M03</div></div>
+        <div class="bg-[#ece2c8] p-3 text-center"><div class="serif-display font-bold text-[13px]">搭模斯</div><div class="mono text-[8px]">M04</div></div>
+        <div class="bg-[#ece2c8] p-3 text-center"><div class="serif-display font-bold text-[13px]">埃波</div><div class="mono text-[8px]">M05</div></div>
+        <div class="bg-[#ece2c8] p-3 text-center"><div class="serif-display font-bold text-[13px]">以祿</div><div class="mono text-[8px]">M06</div></div>
+        <div class="bg-[#ece2c8] p-3 text-center"><div class="serif-display font-bold text-[13px]">提斯利</div><div class="mono text-[8px]">M07</div></div>
+        <div class="bg-[#ece2c8] p-3 text-center"><div class="serif-display font-bold text-[13px]">馬西班</div><div class="mono text-[8px]">M08</div></div>
+        <div class="bg-[#ece2c8] p-3 text-center"><div class="serif-display font-bold text-[13px]">基斯流</div><div class="mono text-[8px]">M09</div></div>
+        <div class="bg-[#ece2c8] p-3 text-center"><div class="serif-display font-bold text-[13px]">提別</div><div class="mono text-[8px]">M10</div></div>
+        <div class="bg-[#ece2c8] p-3 text-center"><div class="serif-display font-bold text-[13px]">細罷特</div><div class="mono text-[8px]">M11</div></div>
+        <div class="bg-[#ece2c8] p-3 text-center"><div class="serif-display font-bold text-[13px]">亞達</div><div class="mono text-[8px]">M12</div></div>
+      </div>
+    </div>
+
+    <!-- Layer 3: Seasons (background) -->
+    <div class="mt-4">
+      <div class="mono nano mb-1 text-[color:var(--ink-soft)]">LAYER 03 · BACKGROUND · FOUR SEASONS</div>
+      <div class="grid grid-cols-12 gap-px bg-[color:var(--ink)] border border-[color:var(--ink)]">
+        <div class="col-span-3 p-4 text-center" style="background:#5b6b3a;color:#f4ecd8">
+          <div class="serif-display font-black text-[22px]">春．救贖</div>
+          <div class="mono text-[9px] mt-1">REDEMPTION · 尼散 · 以珥 · 西彎</div>
+        </div>
+        <div class="col-span-3 p-4 text-center" style="background:#a8341f;color:#f4ecd8">
+          <div class="serif-display font-black text-[22px]">夏．哀悼</div>
+          <div class="mono text-[9px] mt-1">MOURNING · 搭模斯 · 埃波 · 以祿</div>
+        </div>
+        <div class="col-span-3 p-4 text-center" style="background:#a87f2e;color:#f4ecd8">
+          <div class="serif-display font-black text-[22px]">秋．聖會</div>
+          <div class="mono text-[9px] mt-1">ASSEMBLY · 提斯利 · 馬西班 · 基斯流</div>
+        </div>
+        <div class="col-span-3 p-4 text-center" style="background:#2a4a5b;color:#f4ecd8">
+          <div class="serif-display font-black text-[22px]">冬．盼望</div>
+          <div class="mono text-[9px] mt-1">HOPE · 提別 · 細罷特 · 亞達</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parallax depth diagram -->
+    <div class="mt-6 p-5 border border-[color:var(--ink)] bg-[#ece2c8]">
+      <div class="flex items-center justify-between mb-3">
+        <div class="serif-display italic font-bold text-[18px]">如何閱讀此條視差帶 · How to read this parallax strip</div>
+        <div class="mono text-[10px] tracking-[0.2em]">FIG. 03</div>
+      </div>
+      <div class="rule-hair mb-3"></div>
+      <div class="grid grid-cols-3 gap-6 text-[13px] serif-body leading-[1.7]">
+        <div>
+          <div class="badge-stamp inline-block px-2 py-0.5 text-[9px] mb-2">前景 · FAST</div>
+          <p>節期 / 禁食以最快的速度從眼前掠過 —— 它們是肉眼可見的時間刻度, 也是儀式發生的瞬間。</p>
+        </div>
+        <div>
+          <div class="badge-stamp inline-block px-2 py-0.5 text-[9px] mb-2">中景 · MEDIUM</div>
+          <p>月份以中速度移動 —— 月相、農時、氣候在此累積為「一個月」, 是節期與季節之間的橋。</p>
+        </div>
+        <div>
+          <div class="badge-stamp inline-block px-2 py-0.5 text-[9px] mb-2">遠景 · SLOW</div>
+          <p>四季幾乎不動 —— 它們是宗教年的敘事結構: 救贖、哀悼、聖會、盼望, 構成一輪完整的呼吸。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule-thick mt-14"></div>
+
+  <!-- ============ SECTION VI · DATA TABLE ============ -->
+  <section class="mt-12">
+    <div class="grid grid-cols-12 gap-6 items-end">
+      <div class="col-span-2">
+        <div class="section-num text-[110px] leading-[0.85]">VI</div>
+        <div class="mono text-[10px] tracking-[0.2em]">§ APPENDIX · B</div>
+      </div>
+      <div class="col-span-10">
+        <h2 class="serif-display font-black text-[44px] leading-[0.95]">
+          Almanac <span class="italic italic-accent">Index</span> · 速查總覽
+        </h2>
+        <p class="serif-body italic text-[14px] mt-2 text-[color:var(--ink-soft)] max-w-[60ch]">
+          一張可印刷可冰箱貼的速查表 —— 全年十二月份, 十四個節期與禁食日, 一覽無遺。
+        </p>
+      </div>
+    </div>
+    <div class="rule-thin mt-6"></div>
+
+    <table class="w-full mt-6 border-collapse text-[13px]">
+      <thead>
+        <tr class="border-y-2 border-[color:var(--ink)]">
+          <th class="mono text-[10px] tracking-[0.2em] uppercase text-left py-2 pr-3">#</th>
+          <th class="mono text-[10px] tracking-[0.2em] uppercase text-left py-2 pr-3">季節</th>
+          <th class="mono text-[10px] tracking-[0.2em] uppercase text-left py-2 pr-3">月份 · Heb.</th>
+          <th class="mono text-[10px] tracking-[0.2em] uppercase text-left py-2 pr-3">西曆對應</th>
+          <th class="mono text-[10px] tracking-[0.2em] uppercase text-left py-2 pr-3">日</th>
+          <th class="mono text-[10px] tracking-[0.2em] uppercase text-left py-2 pr-3">節期 / 禁食</th>
+          <th class="mono text-[10px] tracking-[0.2em] uppercase text-left py-2 pr-3">類別</th>
+        </tr>
+      </thead>
+      <tbody class="serif-body">
+        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">01</td><td class="py-2 pr-3" style="color:#5b6b3a"><strong>春．救贖</strong></td><td class="py-2 pr-3">尼散月 · Nisan</td><td class="py-2 pr-3 mono">3–4 月</td><td class="py-2 pr-3 mono">14</td><td class="py-2 pr-3">逾越節 · Pesach</td><td class="py-2 pr-3 italic">朝聖大節</td></tr>
+        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">02</td><td class="py-2 pr-3" style="color:#5b6b3a">春．救贖</td><td class="py-2 pr-3">尼散月</td><td class="py-2 pr-3 mono">3–4 月</td><td class="py-2 pr-3 mono">15–21</td><td class="py-2 pr-3">無酵節 · Hag HaMatzot</td><td class="py-2 pr-3 italic">七日節期</td></tr>
+        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">03</td><td class="py-2 pr-3" style="color:#5b6b3a">春．救贖</td><td class="py-2 pr-3">尼散月</td><td class="py-2 pr-3 mono">3–4 月</td><td class="py-2 pr-3 mono">16</td><td class="py-2 pr-3">初熟節 · Bikkurim</td><td class="py-2 pr-3 italic">搖祭日</td></tr>
+        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">04</td><td class="py-2 pr-3" style="color:#5b6b3a">春．救贖</td><td class="py-2 pr-3">以珥月 · Iyar</td><td class="py-2 pr-3 mono">4–5 月</td><td class="py-2 pr-3 mono">14</td><td class="py-2 pr-3">第二逾越節 · Pesach Sheni</td><td class="py-2 pr-3 italic">補課日</td></tr>
+        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">05</td><td class="py-2 pr-3" style="color:#5b6b3a">春．救贖</td><td class="py-2 pr-3">西彎月 · Sivan</td><td class="py-2 pr-3 mono">5–6 月</td><td class="py-2 pr-3 mono">06</td><td class="py-2 pr-3">七七節 / 五旬節 · Shavuot</td><td class="py-2 pr-3 italic">朝聖大節</td></tr>
+        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">06</td><td class="py-2 pr-3" style="color:#a8341f"><strong>夏．哀悼</strong></td><td class="py-2 pr-3">搭模斯月 · Tammuz</td><td class="py-2 pr-3 mono">6–7 月</td><td class="py-2 pr-3 mono">17</td><td class="py-2 pr-3">搭模斯禁食 · 城破</td><td class="py-2 pr-3 italic">禁食日</td></tr>
+        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">07</td><td class="py-2 pr-3" style="color:#a8341f">夏．哀悼</td><td class="py-2 pr-3">埃波月 · Av</td><td class="py-2 pr-3 mono">7–8 月</td><td class="py-2 pr-3 mono">09</td><td class="py-2 pr-3">聖殿被毀日 · Tisha B'Av</td><td class="py-2 pr-3 italic">禁食大日</td></tr>
+        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">08</td><td class="py-2 pr-3" style="color:#a8341f">夏．哀悼</td><td class="py-2 pr-3">以祿月 · Elul</td><td class="py-2 pr-3 mono">8–9 月</td><td class="py-2 pr-3 mono">—</td><td class="py-2 pr-3">悔改預備月 · 30 days of Teshuvah</td><td class="py-2 pr-3 italic">預備期</td></tr>
+        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">09</td><td class="py-2 pr-3" style="color:#a87f2e"><strong>秋．聖會</strong></td><td class="py-2 pr-3">提斯利月 · Tishri</td><td class="py-2 pr-3 mono">9–10 月</td><td class="py-2 pr-3 mono">1–2</td><td class="py-2 pr-3">吹角節 · Rosh Hashanah</td><td class="py-2 pr-3 italic">民曆新年</td></tr>
+        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">10</td><td class="py-2 pr-3" style="color:#a87f2e">秋．聖會</td><td class="py-2 pr-3">提斯利月</td><td class="py-2 pr-3 mono">9–10 月</td><td class="py-2 pr-3 mono">10</td><td class="py-2 pr-3">贖罪日 · Yom Kippur</td><td class="py-2 pr-3 italic">至聖之日</td></tr>
+        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">11</td><td class="py-2 pr-3" style="color:#a87f2e">秋．聖會</td><td class="py-2 pr-3">提斯利月</td><td class="py-2 pr-3 mono">9–10 月</td><td class="py-2 pr-3 mono">15–21</td><td class="py-2 pr-3">住棚節 · Sukkot</td><td class="py-2 pr-3 italic">朝聖大節</td></tr>
+        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">12</td><td class="py-2 pr-3" style="color:#a87f2e">秋．聖會</td><td class="py-2 pr-3">提斯利月</td><td class="py-2 pr-3 mono">9–10 月</td><td class="py-2 pr-3 mono">22</td><td class="py-2 pr-3">聖會末日 · Shemini Atzeret</td><td class="py-2 pr-3 italic">第八日</td></tr>
+        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">13</td><td class="py-2 pr-3" style="color:#a87f2e">秋．聖會</td><td class="py-2 pr-3">基斯流月 · Kislev</td><td class="py-2 pr-3 mono">11–12 月</td><td class="py-2 pr-3 mono">25</td><td class="py-2 pr-3">修殿節 · Hanukkah (起)</td><td class="py-2 pr-3 italic">八夜燭火</td></tr>
+        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">14</td><td class="py-2 pr-3" style="color:#2a4a5b"><strong>冬．盼望</strong></td><td class="py-2 pr-3">提別月 · Tevet</td><td class="py-2 pr-3 mono">12–1 月</td><td class="py-2 pr-3 mono">10</td><td class="py-2 pr-3">圍城禁食 · Asarah B'Tevet</td><td class="py-2 pr-3 italic">禁食日</td></tr>
+        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">15</td><td class="py-2 pr-3" style="color:#2a4a5b">冬．盼望</td><td class="py-2 pr-3">細罷特月 · Shevat</td><td class="py-2 pr-3 mono">1–2 月</td><td class="py-2 pr-3 mono">15</td><td class="py-2 pr-3">樹木新年 · Tu BiShvat</td><td class="py-2 pr-3 italic">自然之節</td></tr>
+        <tr><td class="py-2 pr-3 mono">16</td><td class="py-2 pr-3" style="color:#2a4a5b">冬．盼望</td><td class="py-2 pr-3">亞達月 · Adar</td><td class="py-2 pr-3 mono">2–3 月</td><td class="py-2 pr-3 mono">14–15</td><td class="py-2 pr-3">普珥節 · Purim</td><td class="py-2 pr-3 italic">歡騰節</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <div class="rule-thick mt-14"></div>
+  <div class="parallax-band my-1"></div>
+
+  <!-- ============ COLOPHON / FOOTER ============ -->
+  <footer class="mt-12">
+    <div class="grid grid-cols-12 gap-6 items-start">
+      <div class="col-span-4">
+        <div class="stamp-circle inline-block px-4 py-2 mono text-[10px]">SET IN TYPE · 2026</div>
+        <p class="serif-body italic text-[12px] mt-4 text-[color:var(--ink-soft)] leading-[1.7]">
+          排版於耶路撒冷與台北之間, 印於 cream paper #f4ecd8, 油墨色 #1a1612, 強調色取自巴勒斯坦黎明的橙紅。
+        </p>
+      </div>
+      <div class="col-span-4 text-center">
+        <div class="ornament text-[18px] mb-3">❦ ❦ ❦</div>
+        <div class="serif-display italic font-bold text-[22px]">— Fin —</div>
+        <div class="mono text-[10px] mt-2 tracking-[0.2em]">「下一個月, 又是尼散。」</div>
+        <div class="ornament text-[18px] mt-3">❦ ❦ ❦</div>
+      </div>
+      <div class="col-span-4 text-right">
+        <div class="mono text-[10px] tracking-[0.2em] uppercase">Colophon</div>
+        <div class="serif-body text-[12px] mt-2 leading-[1.7]">
+          Typefaces · <strong>Playfair Display</strong>, <strong>IBM Plex Serif</strong>, <strong>JetBrains Mono</strong>, <strong>Noto Serif TC</strong><br>
+          Grid · 8px baseline, 12 cols, max-width 1180px<br>
+          Palette · cream / ink / accent-red / season-quad
+        </div>
+      </div>
+    </div>
+
+    <div class="rule-thick mt-10"></div>
+    <div class="flex items-center justify-between mono text-[10px] tracking-[0.2em] uppercase py-3">
+      <span>© 5786 · The Hebrew Almanac</span>
+      <span>Parallax Edition · Vol. I</span>
+      <span>Printed on cream stock · 80gsm</span>
+      <span>End of issue · 卷終</span>
+    </div>
+    <div class="parallax-band"></div>
+  </footer>
+
+</div>
+
+</body>
+</html>
