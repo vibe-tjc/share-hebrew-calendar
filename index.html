@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" data-theme="parchment" data-font-size="normal">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,26 +8,83 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&family=Noto+Serif+TC:wght@400;500;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script>
+  (() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem('hebrew-almanac-settings') || '{}');
+      document.documentElement.dataset.theme = saved.theme || 'parchment';
+      document.documentElement.dataset.fontSize = saved.fontSize || 'normal';
+    } catch {
+      document.documentElement.dataset.theme = 'parchment';
+      document.documentElement.dataset.fontSize = 'normal';
+    }
+  })();
+</script>
 <style>
   :root{
     --cream:#f4ecd8;
     --cream-2:#ece2c8;
     --ink:#1a1612;
+    --ink-rgb:26,22,18;
     --ink-soft:#3a342c;
     --rule:#1a1612;
     --accent:#a8341f;
     --accent-2:#5b6b3a;
     --gold:#a87f2e;
+    --paper-highlight-rgb:255,255,255;
+    --font-scale:1.12;
   }
+  html[data-theme="parchment"]{
+    --cream:#f4ecd8; --cream-2:#ece2c8; --ink:#1a1612; --ink-rgb:26,22,18;
+    --ink-soft:#3a342c; --rule:#1a1612; --accent:#a8341f; --accent-2:#5b6b3a; --gold:#a87f2e;
+    --paper-highlight-rgb:255,255,255;
+  }
+  html[data-theme="midnight"]{
+    --cream:#111827; --cream-2:#1f2937; --ink:#f8f1df; --ink-rgb:248,241,223;
+    --ink-soft:#d8cba8; --rule:#f8f1df; --accent:#f59e70; --accent-2:#9bb26f; --gold:#f6c96d;
+    --paper-highlight-rgb:255,255,255;
+  }
+  html[data-theme="olive"]{
+    --cream:#edf0dd; --cream-2:#d9dfc2; --ink:#1d2316; --ink-rgb:29,35,22;
+    --ink-soft:#465137; --rule:#1d2316; --accent:#8f3b24; --accent-2:#596f35; --gold:#937526;
+    --paper-highlight-rgb:255,255,255;
+  }
+  html[data-theme="contrast"]{
+    --cream:#fffdf6; --cream-2:#f1ede1; --ink:#080808; --ink-rgb:8,8,8;
+    --ink-soft:#1f1f1f; --rule:#080808; --accent:#b00020; --accent-2:#1b5e20; --gold:#8a5f00;
+    --paper-highlight-rgb:255,255,255;
+  }
+  html[data-font-size="normal"]{--font-scale:1.12;}
+  html[data-font-size="large"]{--font-scale:1.28;}
+  html[data-font-size="xlarge"]{--font-scale:1.45;}
+  html{scroll-behavior:smooth;}
   html,body{background:var(--cream);color:var(--ink);}
   body{
     font-family:'IBM Plex Serif','Noto Serif TC',Georgia,serif;
     background-image:
-      radial-gradient(rgba(26,22,18,0.10) 1px, transparent 1px),
-      radial-gradient(rgba(26,22,18,0.06) 1px, transparent 1px);
+      radial-gradient(rgba(var(--ink-rgb),0.10) 1px, transparent 1px),
+      radial-gradient(rgba(var(--ink-rgb),0.06) 1px, transparent 1px);
     background-size: 4px 4px, 7px 7px;
     background-position: 0 0, 2px 2px;
   }
+  .content-shell{font-size:calc(16px * var(--font-scale));}
+  .text-\[8px\]{font-size:calc(8px * var(--font-scale))!important;}
+  .text-\[9px\]{font-size:calc(9px * var(--font-scale))!important;}
+  .text-\[10px\]{font-size:calc(10px * var(--font-scale))!important;}
+  .text-\[11px\]{font-size:calc(11px * var(--font-scale))!important;}
+  .text-\[12px\]{font-size:calc(12px * var(--font-scale))!important;}
+  .text-\[13px\]{font-size:calc(13px * var(--font-scale))!important;}
+  .text-\[14px\]{font-size:calc(14px * var(--font-scale))!important;}
+  .text-\[15px\]{font-size:calc(15px * var(--font-scale))!important;}
+  .text-\[16px\]{font-size:calc(16px * var(--font-scale))!important;}
+  .text-\[18px\]{font-size:calc(18px * var(--font-scale))!important;}
+  .text-\[22px\]{font-size:calc(22px * var(--font-scale))!important;}
+  .text-\[24px\]{font-size:calc(24px * var(--font-scale))!important;}
+  .text-\[26px\]{font-size:calc(26px * var(--font-scale))!important;}
+  .text-\[28px\]{font-size:calc(28px * var(--font-scale))!important;}
+  .text-\[44px\]{font-size:calc(44px * var(--font-scale))!important;}
+  .text-\[58px\]{font-size:calc(58px * var(--font-scale))!important;}
+  .text-\[110px\]{font-size:calc(110px * var(--font-scale))!important;}
   .serif-display{font-family:'Playfair Display','Noto Serif TC',serif;}
   .serif-body{font-family:'IBM Plex Serif','Noto Serif TC',serif;}
   .sans-cn{font-family:'Noto Sans TC',sans-serif;}
@@ -40,7 +97,7 @@
   .italic-accent{font-style:italic;color:var(--accent);}
   .rule-thick{border-top:3px double var(--ink);}
   .rule-thin{border-top:1px solid var(--ink);}
-  .rule-hair{border-top:1px solid rgba(26,22,18,0.3);}
+  .rule-hair{border-top:1px solid rgba(var(--ink-rgb),0.3);}
   .dropcap::first-letter{
     font-family:'Playfair Display',serif;
     font-weight:900;
@@ -50,7 +107,7 @@
     padding:0.4rem 0.6rem 0 0;
     color:var(--accent);
   }
-  .col-rule{column-rule:1px solid rgba(26,22,18,0.25);}
+  .col-rule{column-rule:1px solid rgba(var(--ink-rgb),0.25);}
   .pull-quote{
     font-family:'Playfair Display',serif;
     font-style:italic;
@@ -78,8 +135,8 @@
   }
   .small-cap{font-variant:small-caps;letter-spacing:0.12em;}
   .month-card{
-    background: linear-gradient(180deg, rgba(255,255,255,0.35), rgba(255,255,255,0));
-    border:1px solid rgba(26,22,18,0.5);
+    background: linear-gradient(180deg, rgba(var(--paper-highlight-rgb),0.35), rgba(var(--paper-highlight-rgb),0));
+    border:1px solid rgba(var(--ink-rgb),0.5);
   }
   .feast-dot{
     width:6px;height:6px;border-radius:9999px;background:var(--accent);
@@ -93,7 +150,7 @@
     font-family:'JetBrains Mono',monospace;
     white-space:pre;
     line-height:1.05;
-    font-size:9px;
+    font-size:calc(9px * var(--font-scale));
     color:var(--ink-soft);
   }
   .parallax-band{
@@ -115,10 +172,10 @@
   }
   .season-rule{border-color:var(--season);}
   .season-num{color:var(--season);}
-  .feast-row{border-bottom:1px dotted rgba(26,22,18,0.35);}
+  .feast-row{border-bottom:1px dotted rgba(var(--ink-rgb),0.35);}
   .feast-row:last-child{border-bottom:none;}
-  .micro{font-size:10.5px;line-height:1.55;}
-  .nano{font-size:9.5px;letter-spacing:0.08em;}
+  .micro{font-size:calc(10.5px * var(--font-scale));line-height:1.55;}
+  .nano{font-size:calc(9.5px * var(--font-scale));letter-spacing:0.08em;}
   .stamp-circle{
     border:2px solid var(--accent);
     border-radius:9999px;
@@ -142,29 +199,91 @@
   .axis-hair-left{
     position:absolute;right:50%;top:50%;
     transform:translateY(-50%);
-    width:36px;height:1px;background:rgba(26,22,18,0.45);
+    width:36px;height:1px;background:rgba(var(--ink-rgb),0.45);
   }
   .axis-hair-right{
     position:absolute;left:50%;top:50%;
     transform:translateY(-50%);
-    width:36px;height:1px;background:rgba(26,22,18,0.45);
+    width:36px;height:1px;background:rgba(var(--ink-rgb),0.45);
   }
   .axis-season-band{
     position:absolute;left:50%;transform:translateX(-50%);
     writing-mode:vertical-rl;letter-spacing:0.5em;
     font-family:'JetBrains Mono',monospace;
-    font-size:9.5px;color:var(--cream);
+    font-size:calc(9.5px * var(--font-scale));color:var(--cream);
     padding:8px 4px;border-radius:2px;
     z-index:2;
   }
+  .settings-panel{
+    position:fixed;right:18px;bottom:18px;z-index:50;
+    width:min(360px,calc(100vw - 32px));
+    background:var(--cream);
+    background:color-mix(in srgb, var(--cream) 92%, transparent);
+    border:1px solid rgba(var(--ink-rgb),0.35);
+    box-shadow:0 18px 55px rgba(0,0,0,0.18);
+    backdrop-filter:blur(10px); border-radius:18px; overflow:hidden;
+  }
+  .settings-toggle{display:flex;width:100%;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;color:var(--ink);}
+  .settings-body{display:none;padding:0 14px 14px;}
+  .settings-panel.is-open .settings-body{display:block;}
+  .settings-group{display:grid;gap:8px;margin-top:12px;}
+  .settings-options{display:flex;flex-wrap:wrap;gap:8px;}
+  .settings-option{
+    border:1px solid rgba(var(--ink-rgb),0.35);border-radius:999px;
+    padding:7px 10px;color:var(--ink);background:rgba(var(--paper-highlight-rgb),0.18);
+    transition:transform .15s ease, background .15s ease, border-color .15s ease;
+  }
+  .settings-option:hover{transform:translateY(-1px);border-color:var(--accent);}
+  .settings-option[aria-pressed="true"]{background:var(--ink);color:var(--cream);border-color:var(--ink);}
+  .skip-link{position:absolute;left:12px;top:-80px;z-index:60;background:var(--ink);color:var(--cream);padding:10px 12px;border-radius:999px;}
+  .skip-link:focus{top:12px;}
+  @media (max-width: 760px){
+    .content-shell{padding:1rem!important;}
+    .grid{grid-template-columns:1fr!important;}
+    [class*="col-span-"]{grid-column:1 / -1!important;}
+    .vrule{writing-mode:horizontal-tb;letter-spacing:.18em;}
+    table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    .settings-panel{right:12px;bottom:12px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important;}
+  }
   @media print {
     body{background:#f4ecd8;}
+    .settings-panel,.skip-link{display:none!important;}
   }
 </style>
 </head>
 <body class="min-h-screen">
+<a class="skip-link mono text-[12px]" href="#main-content">跳到主要內容</a>
 
-<div class="max-w-[1180px] mx-auto px-8 py-10">
+<aside class="settings-panel sans-cn" aria-label="Client settings">
+  <button id="settingsToggle" class="settings-toggle" type="button" aria-expanded="false">
+    <span class="mono text-[11px] tracking-[0.18em] uppercase">Display Settings</span>
+    <span aria-hidden="true">⚙︎</span>
+  </button>
+  <div class="settings-body" id="settingsBody">
+    <div class="settings-group">
+      <div class="mono text-[10px] tracking-[0.2em] uppercase">主題</div>
+      <div class="settings-options" data-setting="theme">
+        <button class="settings-option text-[12px]" type="button" data-value="parchment">羊皮紙</button>
+        <button class="settings-option text-[12px]" type="button" data-value="midnight">夜讀</button>
+        <button class="settings-option text-[12px]" type="button" data-value="olive">橄欖園</button>
+        <button class="settings-option text-[12px]" type="button" data-value="contrast">高對比</button>
+      </div>
+    </div>
+    <div class="settings-group">
+      <div class="mono text-[10px] tracking-[0.2em] uppercase">字體大小</div>
+      <div class="settings-options" data-setting="fontSize">
+        <button class="settings-option text-[12px]" type="button" data-value="normal">一般</button>
+        <button class="settings-option text-[12px]" type="button" data-value="large">大</button>
+        <button class="settings-option text-[12px]" type="button" data-value="xlarge">特大</button>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<div id="main-content" class="content-shell max-w-[1180px] mx-auto px-8 py-10">
 
   <!-- ============ DATELINE / MASTHEAD ============ -->
   <header>
@@ -323,7 +442,7 @@
       <!-- SEASON DIVIDER · SPRING → SUMMER -->
       <div class="relative my-2">
         <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 mono text-[9px] tracking-[0.25em] px-3 py-1 z-10" style="background:#5b6b3a;color:var(--cream)">春 · REDEMPTION ▾</div>
-        <div class="border-t border-dashed border-[color:rgba(26,22,18,0.35)] h-px"></div>
+        <div class="border-t border-dashed border-[color:rgba(var(--ink-rgb),0.35)] h-px"></div>
       </div>
 
       <!-- ROW · TAMMUZ -->
@@ -383,7 +502,7 @@
       <!-- SEASON DIVIDER · SUMMER → FALL -->
       <div class="relative my-2">
         <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 mono text-[9px] tracking-[0.25em] px-3 py-1 z-10" style="background:#a8341f;color:var(--cream)">夏 · MOURNING ▾</div>
-        <div class="border-t border-dashed border-[color:rgba(26,22,18,0.35)] h-px"></div>
+        <div class="border-t border-dashed border-[color:rgba(var(--ink-rgb),0.35)] h-px"></div>
       </div>
 
       <!-- ROW · TISHRI -->
@@ -446,7 +565,7 @@
       <!-- SEASON DIVIDER · FALL → WINTER -->
       <div class="relative my-2">
         <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 mono text-[9px] tracking-[0.25em] px-3 py-1 z-10" style="background:#a87f2e;color:var(--cream)">秋 · ASSEMBLY ▾</div>
-        <div class="border-t border-dashed border-[color:rgba(26,22,18,0.35)] h-px"></div>
+        <div class="border-t border-dashed border-[color:rgba(var(--ink-rgb),0.35)] h-px"></div>
       </div>
 
       <!-- ROW · TEVET -->
@@ -1143,21 +1262,21 @@
         </tr>
       </thead>
       <tbody class="serif-body">
-        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">01</td><td class="py-2 pr-3" style="color:#5b6b3a"><strong>春．救贖</strong></td><td class="py-2 pr-3">尼散月 · Nisan</td><td class="py-2 pr-3 mono">3–4 月</td><td class="py-2 pr-3 mono">14</td><td class="py-2 pr-3">逾越節 · Pesach</td><td class="py-2 pr-3 italic">朝聖大節</td></tr>
-        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">02</td><td class="py-2 pr-3" style="color:#5b6b3a">春．救贖</td><td class="py-2 pr-3">尼散月</td><td class="py-2 pr-3 mono">3–4 月</td><td class="py-2 pr-3 mono">15–21</td><td class="py-2 pr-3">無酵節 · Hag HaMatzot</td><td class="py-2 pr-3 italic">七日節期</td></tr>
-        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">03</td><td class="py-2 pr-3" style="color:#5b6b3a">春．救贖</td><td class="py-2 pr-3">尼散月</td><td class="py-2 pr-3 mono">3–4 月</td><td class="py-2 pr-3 mono">16</td><td class="py-2 pr-3">初熟節 · Bikkurim</td><td class="py-2 pr-3 italic">搖祭日</td></tr>
-        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">04</td><td class="py-2 pr-3" style="color:#5b6b3a">春．救贖</td><td class="py-2 pr-3">以珥月 · Iyar</td><td class="py-2 pr-3 mono">4–5 月</td><td class="py-2 pr-3 mono">14</td><td class="py-2 pr-3">第二逾越節 · Pesach Sheni</td><td class="py-2 pr-3 italic">補課日</td></tr>
-        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">05</td><td class="py-2 pr-3" style="color:#5b6b3a">春．救贖</td><td class="py-2 pr-3">西彎月 · Sivan</td><td class="py-2 pr-3 mono">5–6 月</td><td class="py-2 pr-3 mono">06</td><td class="py-2 pr-3">七七節 / 五旬節 · Shavuot</td><td class="py-2 pr-3 italic">朝聖大節</td></tr>
-        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">06</td><td class="py-2 pr-3" style="color:#a8341f"><strong>夏．哀悼</strong></td><td class="py-2 pr-3">搭模斯月 · Tammuz</td><td class="py-2 pr-3 mono">6–7 月</td><td class="py-2 pr-3 mono">17</td><td class="py-2 pr-3">搭模斯禁食 · 城破</td><td class="py-2 pr-3 italic">禁食日</td></tr>
-        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">07</td><td class="py-2 pr-3" style="color:#a8341f">夏．哀悼</td><td class="py-2 pr-3">埃波月 · Av</td><td class="py-2 pr-3 mono">7–8 月</td><td class="py-2 pr-3 mono">09</td><td class="py-2 pr-3">聖殿被毀日 · Tisha B'Av</td><td class="py-2 pr-3 italic">禁食大日</td></tr>
-        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">08</td><td class="py-2 pr-3" style="color:#a8341f">夏．哀悼</td><td class="py-2 pr-3">以祿月 · Elul</td><td class="py-2 pr-3 mono">8–9 月</td><td class="py-2 pr-3 mono">—</td><td class="py-2 pr-3">悔改預備月 · 30 days of Teshuvah</td><td class="py-2 pr-3 italic">預備期</td></tr>
-        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">09</td><td class="py-2 pr-3" style="color:#a87f2e"><strong>秋．聖會</strong></td><td class="py-2 pr-3">提斯利月 · Tishri</td><td class="py-2 pr-3 mono">9–10 月</td><td class="py-2 pr-3 mono">1–2</td><td class="py-2 pr-3">吹角節 · Rosh Hashanah</td><td class="py-2 pr-3 italic">民曆新年</td></tr>
-        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">10</td><td class="py-2 pr-3" style="color:#a87f2e">秋．聖會</td><td class="py-2 pr-3">提斯利月</td><td class="py-2 pr-3 mono">9–10 月</td><td class="py-2 pr-3 mono">10</td><td class="py-2 pr-3">贖罪日 · Yom Kippur</td><td class="py-2 pr-3 italic">至聖之日</td></tr>
-        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">11</td><td class="py-2 pr-3" style="color:#a87f2e">秋．聖會</td><td class="py-2 pr-3">提斯利月</td><td class="py-2 pr-3 mono">9–10 月</td><td class="py-2 pr-3 mono">15–21</td><td class="py-2 pr-3">住棚節 · Sukkot</td><td class="py-2 pr-3 italic">朝聖大節</td></tr>
-        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">12</td><td class="py-2 pr-3" style="color:#a87f2e">秋．聖會</td><td class="py-2 pr-3">提斯利月</td><td class="py-2 pr-3 mono">9–10 月</td><td class="py-2 pr-3 mono">22</td><td class="py-2 pr-3">聖會末日 · Shemini Atzeret</td><td class="py-2 pr-3 italic">第八日</td></tr>
-        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">13</td><td class="py-2 pr-3" style="color:#a87f2e">秋．聖會</td><td class="py-2 pr-3">基斯流月 · Kislev</td><td class="py-2 pr-3 mono">11–12 月</td><td class="py-2 pr-3 mono">25</td><td class="py-2 pr-3">修殿節 · Hanukkah (起)</td><td class="py-2 pr-3 italic">八夜燭火</td></tr>
-        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">14</td><td class="py-2 pr-3" style="color:#2a4a5b"><strong>冬．盼望</strong></td><td class="py-2 pr-3">提別月 · Tevet</td><td class="py-2 pr-3 mono">12–1 月</td><td class="py-2 pr-3 mono">10</td><td class="py-2 pr-3">圍城禁食 · Asarah B'Tevet</td><td class="py-2 pr-3 italic">禁食日</td></tr>
-        <tr class="border-b border-[color:rgba(26,22,18,0.25)]"><td class="py-2 pr-3 mono">15</td><td class="py-2 pr-3" style="color:#2a4a5b">冬．盼望</td><td class="py-2 pr-3">細罷特月 · Shevat</td><td class="py-2 pr-3 mono">1–2 月</td><td class="py-2 pr-3 mono">15</td><td class="py-2 pr-3">樹木新年 · Tu BiShvat</td><td class="py-2 pr-3 italic">自然之節</td></tr>
+        <tr class="border-b border-[color:rgba(var(--ink-rgb),0.25)]"><td class="py-2 pr-3 mono">01</td><td class="py-2 pr-3" style="color:#5b6b3a"><strong>春．救贖</strong></td><td class="py-2 pr-3">尼散月 · Nisan</td><td class="py-2 pr-3 mono">3–4 月</td><td class="py-2 pr-3 mono">14</td><td class="py-2 pr-3">逾越節 · Pesach</td><td class="py-2 pr-3 italic">朝聖大節</td></tr>
+        <tr class="border-b border-[color:rgba(var(--ink-rgb),0.25)]"><td class="py-2 pr-3 mono">02</td><td class="py-2 pr-3" style="color:#5b6b3a">春．救贖</td><td class="py-2 pr-3">尼散月</td><td class="py-2 pr-3 mono">3–4 月</td><td class="py-2 pr-3 mono">15–21</td><td class="py-2 pr-3">無酵節 · Hag HaMatzot</td><td class="py-2 pr-3 italic">七日節期</td></tr>
+        <tr class="border-b border-[color:rgba(var(--ink-rgb),0.25)]"><td class="py-2 pr-3 mono">03</td><td class="py-2 pr-3" style="color:#5b6b3a">春．救贖</td><td class="py-2 pr-3">尼散月</td><td class="py-2 pr-3 mono">3–4 月</td><td class="py-2 pr-3 mono">16</td><td class="py-2 pr-3">初熟節 · Bikkurim</td><td class="py-2 pr-3 italic">搖祭日</td></tr>
+        <tr class="border-b border-[color:rgba(var(--ink-rgb),0.25)]"><td class="py-2 pr-3 mono">04</td><td class="py-2 pr-3" style="color:#5b6b3a">春．救贖</td><td class="py-2 pr-3">以珥月 · Iyar</td><td class="py-2 pr-3 mono">4–5 月</td><td class="py-2 pr-3 mono">14</td><td class="py-2 pr-3">第二逾越節 · Pesach Sheni</td><td class="py-2 pr-3 italic">補課日</td></tr>
+        <tr class="border-b border-[color:rgba(var(--ink-rgb),0.25)]"><td class="py-2 pr-3 mono">05</td><td class="py-2 pr-3" style="color:#5b6b3a">春．救贖</td><td class="py-2 pr-3">西彎月 · Sivan</td><td class="py-2 pr-3 mono">5–6 月</td><td class="py-2 pr-3 mono">06</td><td class="py-2 pr-3">七七節 / 五旬節 · Shavuot</td><td class="py-2 pr-3 italic">朝聖大節</td></tr>
+        <tr class="border-b border-[color:rgba(var(--ink-rgb),0.25)]"><td class="py-2 pr-3 mono">06</td><td class="py-2 pr-3" style="color:#a8341f"><strong>夏．哀悼</strong></td><td class="py-2 pr-3">搭模斯月 · Tammuz</td><td class="py-2 pr-3 mono">6–7 月</td><td class="py-2 pr-3 mono">17</td><td class="py-2 pr-3">搭模斯禁食 · 城破</td><td class="py-2 pr-3 italic">禁食日</td></tr>
+        <tr class="border-b border-[color:rgba(var(--ink-rgb),0.25)]"><td class="py-2 pr-3 mono">07</td><td class="py-2 pr-3" style="color:#a8341f">夏．哀悼</td><td class="py-2 pr-3">埃波月 · Av</td><td class="py-2 pr-3 mono">7–8 月</td><td class="py-2 pr-3 mono">09</td><td class="py-2 pr-3">聖殿被毀日 · Tisha B'Av</td><td class="py-2 pr-3 italic">禁食大日</td></tr>
+        <tr class="border-b border-[color:rgba(var(--ink-rgb),0.25)]"><td class="py-2 pr-3 mono">08</td><td class="py-2 pr-3" style="color:#a8341f">夏．哀悼</td><td class="py-2 pr-3">以祿月 · Elul</td><td class="py-2 pr-3 mono">8–9 月</td><td class="py-2 pr-3 mono">—</td><td class="py-2 pr-3">悔改預備月 · 30 days of Teshuvah</td><td class="py-2 pr-3 italic">預備期</td></tr>
+        <tr class="border-b border-[color:rgba(var(--ink-rgb),0.25)]"><td class="py-2 pr-3 mono">09</td><td class="py-2 pr-3" style="color:#a87f2e"><strong>秋．聖會</strong></td><td class="py-2 pr-3">提斯利月 · Tishri</td><td class="py-2 pr-3 mono">9–10 月</td><td class="py-2 pr-3 mono">1–2</td><td class="py-2 pr-3">吹角節 · Rosh Hashanah</td><td class="py-2 pr-3 italic">民曆新年</td></tr>
+        <tr class="border-b border-[color:rgba(var(--ink-rgb),0.25)]"><td class="py-2 pr-3 mono">10</td><td class="py-2 pr-3" style="color:#a87f2e">秋．聖會</td><td class="py-2 pr-3">提斯利月</td><td class="py-2 pr-3 mono">9–10 月</td><td class="py-2 pr-3 mono">10</td><td class="py-2 pr-3">贖罪日 · Yom Kippur</td><td class="py-2 pr-3 italic">至聖之日</td></tr>
+        <tr class="border-b border-[color:rgba(var(--ink-rgb),0.25)]"><td class="py-2 pr-3 mono">11</td><td class="py-2 pr-3" style="color:#a87f2e">秋．聖會</td><td class="py-2 pr-3">提斯利月</td><td class="py-2 pr-3 mono">9–10 月</td><td class="py-2 pr-3 mono">15–21</td><td class="py-2 pr-3">住棚節 · Sukkot</td><td class="py-2 pr-3 italic">朝聖大節</td></tr>
+        <tr class="border-b border-[color:rgba(var(--ink-rgb),0.25)]"><td class="py-2 pr-3 mono">12</td><td class="py-2 pr-3" style="color:#a87f2e">秋．聖會</td><td class="py-2 pr-3">提斯利月</td><td class="py-2 pr-3 mono">9–10 月</td><td class="py-2 pr-3 mono">22</td><td class="py-2 pr-3">聖會末日 · Shemini Atzeret</td><td class="py-2 pr-3 italic">第八日</td></tr>
+        <tr class="border-b border-[color:rgba(var(--ink-rgb),0.25)]"><td class="py-2 pr-3 mono">13</td><td class="py-2 pr-3" style="color:#a87f2e">秋．聖會</td><td class="py-2 pr-3">基斯流月 · Kislev</td><td class="py-2 pr-3 mono">11–12 月</td><td class="py-2 pr-3 mono">25</td><td class="py-2 pr-3">修殿節 · Hanukkah (起)</td><td class="py-2 pr-3 italic">八夜燭火</td></tr>
+        <tr class="border-b border-[color:rgba(var(--ink-rgb),0.25)]"><td class="py-2 pr-3 mono">14</td><td class="py-2 pr-3" style="color:#2a4a5b"><strong>冬．盼望</strong></td><td class="py-2 pr-3">提別月 · Tevet</td><td class="py-2 pr-3 mono">12–1 月</td><td class="py-2 pr-3 mono">10</td><td class="py-2 pr-3">圍城禁食 · Asarah B'Tevet</td><td class="py-2 pr-3 italic">禁食日</td></tr>
+        <tr class="border-b border-[color:rgba(var(--ink-rgb),0.25)]"><td class="py-2 pr-3 mono">15</td><td class="py-2 pr-3" style="color:#2a4a5b">冬．盼望</td><td class="py-2 pr-3">細罷特月 · Shevat</td><td class="py-2 pr-3 mono">1–2 月</td><td class="py-2 pr-3 mono">15</td><td class="py-2 pr-3">樹木新年 · Tu BiShvat</td><td class="py-2 pr-3 italic">自然之節</td></tr>
         <tr><td class="py-2 pr-3 mono">16</td><td class="py-2 pr-3" style="color:#2a4a5b">冬．盼望</td><td class="py-2 pr-3">亞達月 · Adar</td><td class="py-2 pr-3 mono">2–3 月</td><td class="py-2 pr-3 mono">14–15</td><td class="py-2 pr-3">普珥節 · Purim</td><td class="py-2 pr-3 italic">歡騰節</td></tr>
       </tbody>
     </table>
@@ -1203,5 +1322,49 @@
 
 </div>
 
+<script>
+  (() => {
+    const STORAGE_KEY = 'hebrew-almanac-settings';
+    const defaults = { theme: 'parchment', fontSize: 'normal' };
+    const root = document.documentElement;
+    const panel = document.querySelector('.settings-panel');
+    const toggle = document.getElementById('settingsToggle');
+
+    const loadSettings = () => {
+      try { return { ...defaults, ...JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}') }; }
+      catch { return defaults; }
+    };
+
+    const saveSettings = (settings) => localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
+
+    const applySettings = (settings) => {
+      root.dataset.theme = settings.theme;
+      root.dataset.fontSize = settings.fontSize;
+      document.querySelectorAll('[data-setting]').forEach((group) => {
+        const key = group.dataset.setting;
+        group.querySelectorAll('[data-value]').forEach((button) => {
+          button.setAttribute('aria-pressed', String(button.dataset.value === settings[key]));
+        });
+      });
+    };
+
+    let settings = loadSettings();
+    applySettings(settings);
+
+    toggle?.addEventListener('click', () => {
+      const isOpen = panel.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    document.querySelectorAll('[data-setting] [data-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const key = button.closest('[data-setting]').dataset.setting;
+        settings = { ...settings, [key]: button.dataset.value };
+        saveSettings(settings);
+        applySettings(settings);
+      });
+    });
+  })();
+</script>
 </body>
 </html>
